@@ -37,7 +37,7 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         The base estimator from which the transformer is built.
     """
 
-    def __init__(self, estimator):
+    def __init__(self, estimator, passthrough=False, proba_behavior = "original"):
         """Create a StackingEstimator object.
 
         Parameters
@@ -46,6 +46,8 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
             The estimator to generate synthetic features from.
         """
         self.estimator = estimator
+        self.passthrough=passthrough
+        self.proba_behavior = proba_behavior
 
     def fit(self, X, y=None, **fit_params):
         """Fit the StackingEstimator meta-transformer.
@@ -81,14 +83,25 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
             The transformed feature set.
         """
         X = check_array(X)
-        X_transformed = np.copy(X)
         # add class probabilities as a synthetic feature
         if is_classifier(self.estimator) and hasattr(self.estimator, 'predict_proba'):
-            y_pred_proba = self.estimator.predict_proba(X)
+            preds = self.estimator.predict_proba(X)
+            
+            
+            if self.proba_behavior == "p_only" and y_pred_proba.shape[1]==2:
+                preds = preds[:,1]
+            
+            elif self.proba_behavior == "original":
+                preds = np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)), preds))
+            
             # check all values that should be not infinity or not NAN
-            if np.all(np.isfinite(y_pred_proba)):
-                X_transformed = np.hstack((y_pred_proba, X))
+            #TODO include check?
+            #if np.all(np.isfinite(y_pred_proba)):
+            #    X_transformed = np.hstack((y_pred_proba, X))
+        else:
+            preds = np.reshape(self.estimator.predict(X), (-1, 1))
 
-        # add class prediction as a synthetic feature
-        X_transformed = np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)), X_transformed))
-        return X_transformed
+        if self.passthrough:
+            preds = np.hstack(preds,  X )
+
+        return preds
