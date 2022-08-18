@@ -80,15 +80,9 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         X_transformed: array-like, shape (n_samples, n_features + 1) or (n_samples, n_features + 1 + n_classes) for classifier with predict_proba attribute
             The transformed feature set.
         """
-        X = check_array(X)
-        X_transformed = np.copy(X)
-        # add class probabilities as a synthetic feature
         if is_classifier(self.estimator) and hasattr(self.estimator, 'predict_proba'):
-            y_pred_proba = self.estimator.predict_proba(X)
-            # check all values that should be not infinity or not NAN
-            if np.all(np.isfinite(y_pred_proba)):
-                X_transformed = np.hstack((y_pred_proba, X))
-
-        # add class prediction as a synthetic feature
-        X_transformed = np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)), X_transformed))
-        return X_transformed
+            # add class prediction as a synthetic feature
+            return np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)) , self.estimator.predict_proba(X), X))
+        else:
+            # add class prediction as a synthetic feature
+            return np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)), X))
