@@ -81,7 +81,7 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
             The transformed feature set.
         """
         if is_classifier(self.estimator) and hasattr(self.estimator, 'predict_proba'):
-            # add class prediction as a synthetic feature
+            # add class prediction and probabilities as a synthetic feature
             return np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)) , self.estimator.predict_proba(X), X))
         else:
             # add class prediction as a synthetic feature
