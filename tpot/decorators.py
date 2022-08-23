@@ -89,7 +89,8 @@ def _pre_test(func):
                 for expr_test in expr_tuple:
                     pipeline_code = generate_pipeline_code(
                         expr_to_tree(expr_test, self._pset),
-                        self.operators
+                        self.operators,
+                        self.SE_config
                     )
                     sklearn_pipeline = eval(pipeline_code, self.operators_context)
                     with warnings.catch_warnings():

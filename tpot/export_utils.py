@@ -349,7 +349,7 @@ results = exported_pipeline.predict(testing_features)
     return exported_code
 
 
-def generate_pipeline_code(pipeline_tree, operators):
+def generate_pipeline_code(pipeline_tree, operators, SE_config):
     """Generate code specific to the construction of the sklearn Pipeline.
 
     Parameters
@@ -362,14 +362,15 @@ def generate_pipeline_code(pipeline_tree, operators):
     Source code for the sklearn pipeline
 
     """
-    steps = _process_operator(pipeline_tree, operators)
+    steps = _process_operator(pipeline_tree, operators, SE_config)
     pipeline_text = "make_pipeline(\n{STEPS}\n)".format(
         STEPS=_indent(",\n".join(steps), 4)
     )
+    
     return pipeline_text
 
 
-def generate_export_pipeline_code(pipeline_tree, operators):
+def generate_export_pipeline_code(pipeline_tree, operators, SE_config):
     """Generate code specific to the construction of the sklearn Pipeline for export_pipeline.
 
     Parameters
@@ -382,7 +383,7 @@ def generate_export_pipeline_code(pipeline_tree, operators):
     Source code for the sklearn pipeline
 
     """
-    steps = _process_operator(pipeline_tree, operators)
+    steps = _process_operator(pipeline_tree, operators, SE_config)
     # number of steps in a pipeline
     num_step = len(steps)
     if num_step > 1:
@@ -396,18 +397,18 @@ def generate_export_pipeline_code(pipeline_tree, operators):
     return pipeline_text
 
 
-def _process_operator(operator, operators, depth=0):
+def _process_operator(operator, operators, SE_config, depth=0):
     steps = []
     op_name = operator[0]
 
     if op_name == "CombineDFs":
-        steps.append(_combine_dfs(operator[1], operator[2], operators))
+        steps.append(_combine_dfs(operator[1], operator[2], operators,SE_config))
     else:
         input_name, args = operator[1], operator[2:]
         tpot_op = get_by_name(op_name, operators)
 
         if input_name != "input_matrix":
-            steps.extend(_process_operator(input_name, operators, depth + 1))
+            steps.extend(_process_operator(input_name, operators, SE_config, depth + 1))
 
         # If the step is an estimator and is not the last step then we must
         # add its guess as synthetic feature(s)
@@ -415,7 +416,7 @@ def _process_operator(operator, operators, depth=0):
         # classification probabilities for classification if available
         if tpot_op.root and depth > 0:
             steps.append(
-                "StackingEstimator(estimator={})".format(tpot_op.export(*args))
+                "StackingEstimator(estimator={}, {})".format(tpot_op.export(*args),", ".join(f"{key}={value}" for key, value in SE_config.items()))
             )
         else:
             steps.append(tpot_op.export(*args))
@@ -441,30 +442,32 @@ def _indent(text, amount):
     return indentation + ("\n" + indentation).join(text.split("\n"))
 
 
-def _combine_dfs(left, right, operators):
+def _combine_dfs(left, right, operators, SE_config):
     def _make_branch(branch):
         if branch == "input_matrix":
             return "FunctionTransformer(copy)"
         elif branch[0] == "CombineDFs":
-            return _combine_dfs(branch[1], branch[2], operators)
+            return _combine_dfs(branch[1], branch[2], operators,SE_config)
         elif branch[1] == "input_matrix":  # If depth of branch == 1
             tpot_op = get_by_name(branch[0], operators)
 
             if tpot_op.root:
-                return "StackingEstimator(estimator={})".format(
-                    _process_operator(branch, operators)[0]
+                return "StackingEstimator(estimator={}, {})".format(
+                    _process_operator(branch, operators, SE_config)[0],
+                    ", ".join(f"{key}={value}" for key, value in SE_config.items())
                 )
             else:
-                return _process_operator(branch, operators)[0]
+                return _process_operator(branch, operators, SE_config)[0]
         else:  # We're going to have to make a pipeline
             tpot_op = get_by_name(branch[0], operators)
 
             if tpot_op.root:
-                return "StackingEstimator(estimator={})".format(
-                    generate_pipeline_code(branch, operators)
+                return "StackingEstimator(estimator={}, {})".format(
+                    generate_pipeline_code(branch, operators, SE_config),
+                    ", ".join(f"{key}={value}" for key, value in SE_config.items())
                 )
             else:
-                return generate_pipeline_code(branch, operators)
+                return generate_pipeline_code(branch, operators, SE_config)
 
     return "make_union(\n{},\n{}\n)".format(
         _indent(_make_branch(left), 4), _indent(_make_branch(right), 4)

@@ -26,7 +26,8 @@ License along with TPOT. If not, see <http://www.gnu.org/licenses/>.
 import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin, is_classifier
 from sklearn.utils import check_array
-
+from sklearn.model_selection import cross_val_predict
+from sklearn.utils.metaestimators import available_if
 
 class StackingEstimator(BaseEstimator, TransformerMixin):
     """Meta-transformer for adding predictions and/or class probabilities as synthetic feature(s).
@@ -37,7 +38,7 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         The base estimator from which the transformer is built.
     """
 
-    def __init__(self, estimator, passthrough=False, proba_behavior = "original"):
+    def __init__(self, estimator, passthrough=False, proba_original = True, cv=5, stack_method="auto"):
         """Create a StackingEstimator object.
 
         Parameters
@@ -47,7 +48,10 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         """
         self.estimator = estimator
         self.passthrough=passthrough
-        self.proba_behavior = proba_behavior
+        self.proba_original = proba_original
+        self.cv = cv
+        self.stack_method = stack_method
+        self.method = None
 
     def fit(self, X, y=None, **fit_params):
         """Fit the StackingEstimator meta-transformer.
@@ -67,7 +71,38 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
             Returns a copy of the estimator
         """
         self.estimator.fit(X, y, **fit_params)
+
+        if self.stack_method == "auto":
+            if getattr(self.estimator, "predict_proba", None):
+                self.method = "predict_proba"
+            elif getattr(self.estimator, "decision_function", None):
+                self.method = "decision_function"
+            else:
+                self.method = "predict"
+        else:
+            self.method = self.stack_method
+
         return self
+
+    def fit_transform(self, X, y=None, **fit_params):
+        self.fit(X, y, **fit_params)
+        if self.cv >1:
+            preds = cross_val_predict(estimator=self.estimator, X=X, y=y, cv=self.cv, method=self.method, **fit_params)
+
+            if not self.proba_original:
+                if self.method == "predict_proba" and preds.shape[1]==2:
+                    preds = preds[:,1:]
+            else:
+                if self.method=="predict_proba":
+                    preds = np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)), preds))
+                
+            if self.passthrough:
+                preds = np.hstack((preds,  X ))
+
+            return preds
+        
+        else:
+            return self.transform(X)
 
     def transform(self, X):
         """Transform data by adding two synthetic feature(s).
@@ -82,26 +117,38 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         X_transformed: array-like, shape (n_samples, n_features + 1) or (n_samples, n_features + 1 + n_classes) for classifier with predict_proba attribute
             The transformed feature set.
         """
-        X = check_array(X)
-        # add class probabilities as a synthetic feature
-        if is_classifier(self.estimator) and hasattr(self.estimator, 'predict_proba'):
-            preds = self.estimator.predict_proba(X)
-            
-            
-            if self.proba_behavior == "p_only" and y_pred_proba.shape[1]==2:
-                preds = preds[:,1]
-            
-            elif self.proba_behavior == "original":
+
+        preds = getattr(self.estimator, self.method)(X)
+
+        if not self.proba_original:
+            if self.method == "predict_proba" and preds.shape[1]==2:
+                preds = preds[:,1:]
+        else:
+            if self.method=="predict_proba":
                 preds = np.hstack((np.reshape(self.estimator.predict(X), (-1, 1)), preds))
             
-            # check all values that should be not infinity or not NAN
-            #TODO include check?
-            #if np.all(np.isfinite(y_pred_proba)):
-            #    X_transformed = np.hstack((y_pred_proba, X))
-        else:
-            preds = np.reshape(self.estimator.predict(X), (-1, 1))
-
         if self.passthrough:
-            preds = np.hstack(preds,  X )
+            preds = np.hstack((preds,  X ))
 
         return preds
+
+    def _estimator_has(attr):
+        """Check if we can delegate a method to the underlying estimator.
+        First, we check the first fitted final estimator if available, otherwise we
+        check the unfitted final estimator.
+        """
+        return lambda self: (
+            hasattr(self.estimator, attr)
+        )
+
+    @available_if(_estimator_has("predict"))
+    def predict(self, X, **predict_params):
+        return self.estimator.predict(X)
+    
+    @available_if(_estimator_has("predict_proba"))
+    def predict_proba(self, X, **predict_params):
+        return self.estimator.predict_proba(X)
+    
+    @available_if(_estimator_has("decision_function"))
+    def decision_function(self, X, **predict_params):
+        return self.estimator.decision_function(X)

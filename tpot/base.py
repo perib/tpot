@@ -98,6 +98,10 @@ with warnings.catch_warnings():
     warnings.simplefilter("ignore")
     from tqdm.autonotebook import tqdm
 
+stackingestimator_default_config = {
+                            "passthrough":True,
+                            "proba_original" :True,
+                            "cv" : 0}
 
 class TPOTBase(BaseEstimator):
     """Automatically creates and optimizes machine learning pipelines using GP."""
@@ -128,6 +132,7 @@ class TPOTBase(BaseEstimator):
         verbosity=0,
         disable_update_check=False,
         log_file=None,
+        SE_config = stackingestimator_default_config
     ):
         """Set up the genetic programming algorithm for pipeline optimization.
 
@@ -310,6 +315,7 @@ class TPOTBase(BaseEstimator):
         self.disable_update_check = disable_update_check
         self.random_state = random_state
         self.log_file = log_file
+        self.SE_config = SE_config
 
     def _setup_template(self, template):
         self.template = template
@@ -1208,7 +1214,7 @@ class TPOTBase(BaseEstimator):
                 idx = self._pareto_front.items.index(pipeline)
                 pareto_front_pipeline_score = pipeline_scores.wvalues[1]
                 sklearn_pipeline_str = generate_pipeline_code(
-                    expr_to_tree(pipeline, self._pset), self.operators
+                    expr_to_tree(pipeline, self._pset), self.operators, SE_config=self.SE_config
                 )
                 to_write = export_pipeline(
                     pipeline,
@@ -1416,7 +1422,7 @@ class TPOTBase(BaseEstimator):
         sklearn_pipeline: sklearn.pipeline.Pipeline
         """
         sklearn_pipeline_str = generate_pipeline_code(
-            expr_to_tree(expr, self._pset), self.operators
+            expr_to_tree(expr, self._pset), self.operators, SE_config=self.SE_config
         )
         sklearn_pipeline = eval(sklearn_pipeline_str, self.operators_context)
         sklearn_pipeline.memory = self._memory
@@ -1688,7 +1694,7 @@ class TPOTBase(BaseEstimator):
                 )
                 continue
             sklearn_pipeline_str = generate_pipeline_code(
-                expr_to_tree(individual, self._pset), self.operators
+                expr_to_tree(individual, self._pset), self.operators, SE_config=self.SE_config
             )
             if sklearn_pipeline_str.count("PolynomialFeatures") > 1:
                 self.evaluated_individuals_[
