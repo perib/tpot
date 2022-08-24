@@ -89,6 +89,9 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         if self.cv >1:
             preds = cross_val_predict(estimator=self.estimator, X=X, y=y, cv=self.cv, method=self.method, **fit_params)
 
+            if len(preds.shape) < 2:
+                preds = np.reshape(preds, (-1, 1))
+
             if not self.proba_original:
                 if self.method == "predict_proba" and preds.shape[1]==2:
                     preds = preds[:,1:]
@@ -119,6 +122,9 @@ class StackingEstimator(BaseEstimator, TransformerMixin):
         """
 
         preds = getattr(self.estimator, self.method)(X)
+
+        if len(preds.shape) < 2:
+            preds = np.reshape(preds, (-1, 1))
 
         if not self.proba_original:
             if self.method == "predict_proba" and preds.shape[1]==2:
