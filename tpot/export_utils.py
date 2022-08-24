@@ -416,7 +416,7 @@ def _process_operator(operator, operators, SE_config, depth=0):
         # classification probabilities for classification if available
         if tpot_op.root and depth > 0:
             steps.append(
-                "StackingEstimator(estimator={}, {})".format(tpot_op.export(*args),", ".join(f"{key}={value}" for key, value in SE_config.items()))
+                "StackingEstimator(estimator={}, {})".format(tpot_op.export(*args),", ".join(f"{key}={value}" if not type(value) is str else f"{key}=\"{value}\"" for key, value in SE_config.items()))
             )
         else:
             steps.append(tpot_op.export(*args))
@@ -454,7 +454,7 @@ def _combine_dfs(left, right, operators, SE_config):
             if tpot_op.root:
                 return "StackingEstimator(estimator={}, {})".format(
                     _process_operator(branch, operators, SE_config)[0],
-                    ", ".join(f"{key}={value}" for key, value in SE_config.items())
+                    ", ".join(f"{key}={value}" if not type(value) is str else f"{key}=\"{value}\"" for key, value in SE_config.items())
                 )
             else:
                 return _process_operator(branch, operators, SE_config)[0]
@@ -464,7 +464,7 @@ def _combine_dfs(left, right, operators, SE_config):
             if tpot_op.root:
                 return "StackingEstimator(estimator={}, {})".format(
                     generate_pipeline_code(branch, operators, SE_config),
-                    ", ".join(f"{key}={value}" for key, value in SE_config.items())
+                    ", ".join(f"{key}={value}" if not type(value) is str else f"{key}=\"{value}\"" for key, value in SE_config.items())
                 )
             else:
                 return generate_pipeline_code(branch, operators, SE_config)
