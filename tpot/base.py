@@ -1426,7 +1426,7 @@ class TPOTBase(BaseEstimator):
         )
         sklearn_pipeline = eval(sklearn_pipeline_str, self.operators_context)
         sklearn_pipeline.memory = self._memory
-        if self.random_state:
+        if self.random_state is not None:
             # Fix random state when the operator allows
             set_param_recursive(
                 sklearn_pipeline.steps, "random_state", self.random_state
@@ -2031,6 +2031,15 @@ class TPOTBase(BaseEstimator):
                     stack.append((depth + 1, arg))
         return expr
 
+
+    @property
+    def classes_(self):
+        """The classes labels. Only exist if the last step is a classifier."""
+        return self.fitted_pipeline_.classes_
+
+    @property
+    def _estimator_type(self):
+        return self.fitted_pipeline_._estimator_type
 
 def _has_cuml():
     try:

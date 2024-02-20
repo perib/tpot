@@ -37,7 +37,7 @@ This project is hosted at https://github.com/EpistasisLab/tpot
     zip_safe=True,
     install_requires=['numpy>=1.16.3',
                     'scipy>=1.3.1',
-                    'scikit-learn>=0.22.0',
+                    'scikit-learn>=1.1.3',
                     'deap>=1.2',
                     'update_checker>=0.16',
                     'tqdm>=4.36.1',
@@ -51,7 +51,7 @@ This project is hosted at https://github.com/EpistasisLab/tpot
         'dask': ['dask>=0.18.2',
                  'distributed>=1.22.1',
                  'dask-ml>=1.0.0'],
-        'torch': ['torch==1.3.1'],
+        'torch': ['torch==1.13.1'],
 	'imblearn': ['imbalanced-learn>=0.7.0']
     },
     classifiers=[
