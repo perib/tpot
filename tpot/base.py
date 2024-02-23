@@ -28,7 +28,7 @@ import random
 import inspect
 import warnings
 import sys
-import imp
+
 from functools import partial
 from datetime import datetime
 from multiprocessing import cpu_count
@@ -38,7 +38,7 @@ import errno
 
 from tempfile import mkdtemp
 from shutil import rmtree
-
+import types
 import numpy as np
 from pandas import DataFrame
 from scipy import sparse
@@ -417,7 +417,7 @@ class TPOTBase(BaseEstimator):
     def _read_config_file(self, config_path):
         if os.path.isfile(config_path):
             try:
-                custom_config = imp.new_module("custom_config")
+                custom_config = types.ModuleType("custom_config")
 
                 with open(config_path, "r") as config_file:
                     file_string = config_file.read()
@@ -941,7 +941,8 @@ class TPOTBase(BaseEstimator):
                 raise RuntimeError(
                     "There was an error in the TPOT optimization "
                     "process. This could be because the data was "
-                    "not formatted properly, or because data for "
+                    "not formatted properly, because a timeout "
+                    "was reached or because data for "
                     "a regression problem was provided to the "
                     "TPOTClassifier object. Please make sure you "
                     "passed the data to TPOT correctly. If you "
