@@ -518,6 +518,7 @@ class TPOTEstimator(BaseEstimator):
     def fit(self, X, y):
         if self.client is not None: #If user passed in a client manually
            _client = self.client
+           cluster = None  # No cluster to cleanup since user provided client
         else:
 
             if self.verbose >= 4:
@@ -533,401 +534,403 @@ class TPOTEstimator(BaseEstimator):
                     memory_limit=self.memory_limit)
             _client = Client(cluster)
 
-        if self.classification and not self.disable_label_encoder and not check_if_y_is_encoded(y):
-            warnings.warn("Labels are not encoded as ints from 0 to N. For compatibility with some classifiers such as sklearn, TPOT has encoded y with the sklearn LabelEncoder. When using pipelines outside the main TPOT estimator class, you can encode the labels with est.label_encoder_")
-            self.label_encoder_ = LabelEncoder()
-            y = self.label_encoder_.fit_transform(y)
-
-        self.evaluated_individuals = None
-        #determine validation strategy
-        if self.validation_strategy == 'auto':
-            nrows = X.shape[0]
-            ncols = X.shape[1]
-
-            if nrows/ncols < 20:
-                validation_strategy = 'reshuffled'
-            elif nrows/ncols < 100:
-                validation_strategy = 'split'
-            else:
-                validation_strategy = 'none'
-        else:
-            validation_strategy = self.validation_strategy
-
-        if validation_strategy == 'split':
-            if self.classification:
-                X, X_val, y, y_val = train_test_split(X, y, test_size=self.validation_fraction, stratify=y, random_state=self.random_state)
-            else:
-                X, X_val, y, y_val = train_test_split(X, y, test_size=self.validation_fraction, random_state=self.random_state)
-
-
-        X_original = X
-        y_original = y
-        if isinstance(self.cv, int) or isinstance(self.cv, float):
-            n_folds = self.cv
-        else:
-            n_folds = self.cv.get_n_splits(X, y)
-
-        if self.classification:
-            X, y = remove_underrepresented_classes(X, y, n_folds)
-
-        if self.preprocessing:
-            #X = pd.DataFrame(X)
-
-            if not isinstance(self.preprocessing, bool) and isinstance(self.preprocessing, sklearn.base.BaseEstimator):
-                self._preprocessing_pipeline = sklearn.base.clone(self.preprocessing)
-
-            #TODO: check if there are missing values in X before imputation. If not, don't include imputation in pipeline. Check if there are categorical columns. If not, don't include one hot encoding in pipeline
-            else: #if self.preprocessing is True or not a sklearn estimator
-                
-                pipeline_steps = []
-
-                if self.categorical_features is not None: #if categorical features are specified, use those
-                    pipeline_steps.append(("impute_categorical", tpot.builtin_modules.ColumnSimpleImputer(self.categorical_features, strategy='most_frequent')))
-                    pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("numeric", strategy='mean')))
-                    pipeline_steps.append(("ColumnOneHotEncoder", tpot.builtin_modules.ColumnOneHotEncoder(self.categorical_features, min_frequency=0.0001))) # retain wrong param fix
-
+        try:
+            if self.classification and not self.disable_label_encoder and not check_if_y_is_encoded(y):
+                warnings.warn("Labels are not encoded as ints from 0 to N. For compatibility with some classifiers such as sklearn, TPOT has encoded y with the sklearn LabelEncoder. When using pipelines outside the main TPOT estimator class, you can encode the labels with est.label_encoder_")
+                self.label_encoder_ = LabelEncoder()
+                y = self.label_encoder_.fit_transform(y)
+    
+            self.evaluated_individuals = None
+            #determine validation strategy
+            if self.validation_strategy == 'auto':
+                nrows = X.shape[0]
+                ncols = X.shape[1]
+    
+                if nrows/ncols < 20:
+                    validation_strategy = 'reshuffled'
+                elif nrows/ncols < 100:
+                    validation_strategy = 'split'
                 else:
-                    if isinstance(X, pd.DataFrame):
-                        categorical_columns = X.select_dtypes(include=['object']).columns
-                        if len(categorical_columns) > 0:
-                            pipeline_steps.append(("impute_categorical", tpot.builtin_modules.ColumnSimpleImputer("categorical", strategy='most_frequent')))
-                            pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("numeric", strategy='mean')))
-                            pipeline_steps.append(("ColumnOneHotEncoder", tpot.builtin_modules.ColumnOneHotEncoder("categorical", min_frequency=0.0001))) # retain wrong param fix
+                    validation_strategy = 'none'
+            else:
+                validation_strategy = self.validation_strategy
+    
+            if validation_strategy == 'split':
+                if self.classification:
+                    X, X_val, y, y_val = train_test_split(X, y, test_size=self.validation_fraction, stratify=y, random_state=self.random_state)
+                else:
+                    X, X_val, y, y_val = train_test_split(X, y, test_size=self.validation_fraction, random_state=self.random_state)
+    
+    
+            X_original = X
+            y_original = y
+            if isinstance(self.cv, int) or isinstance(self.cv, float):
+                n_folds = self.cv
+            else:
+                n_folds = self.cv.get_n_splits(X, y)
+    
+            if self.classification:
+                X, y = remove_underrepresented_classes(X, y, n_folds)
+    
+            if self.preprocessing:
+                #X = pd.DataFrame(X)
+    
+                if not isinstance(self.preprocessing, bool) and isinstance(self.preprocessing, sklearn.base.BaseEstimator):
+                    self._preprocessing_pipeline = sklearn.base.clone(self.preprocessing)
+    
+                #TODO: check if there are missing values in X before imputation. If not, don't include imputation in pipeline. Check if there are categorical columns. If not, don't include one hot encoding in pipeline
+                else: #if self.preprocessing is True or not a sklearn estimator
+                    
+                    pipeline_steps = []
+    
+                    if self.categorical_features is not None: #if categorical features are specified, use those
+                        pipeline_steps.append(("impute_categorical", tpot.builtin_modules.ColumnSimpleImputer(self.categorical_features, strategy='most_frequent')))
+                        pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("numeric", strategy='mean')))
+                        pipeline_steps.append(("ColumnOneHotEncoder", tpot.builtin_modules.ColumnOneHotEncoder(self.categorical_features, min_frequency=0.0001))) # retain wrong param fix
+    
+                    else:
+                        if isinstance(X, pd.DataFrame):
+                            categorical_columns = X.select_dtypes(include=['object']).columns
+                            if len(categorical_columns) > 0:
+                                pipeline_steps.append(("impute_categorical", tpot.builtin_modules.ColumnSimpleImputer("categorical", strategy='most_frequent')))
+                                pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("numeric", strategy='mean')))
+                                pipeline_steps.append(("ColumnOneHotEncoder", tpot.builtin_modules.ColumnOneHotEncoder("categorical", min_frequency=0.0001))) # retain wrong param fix
+                            else:
+                                pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("all", strategy='mean')))
                         else:
                             pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("all", strategy='mean')))
-                    else:
-                        pipeline_steps.append(("impute_numeric", tpot.builtin_modules.ColumnSimpleImputer("all", strategy='mean')))
-                            
-                self._preprocessing_pipeline = sklearn.pipeline.Pipeline(pipeline_steps)
-
-            X = self._preprocessing_pipeline.fit_transform(X, y)
-            
-        else:
-            self._preprocessing_pipeline = None
-
-        #_, y = sklearn.utils.check_X_y(X, y, y_numeric=True)
-
-        #Set up the configuation dictionaries and the search spaces
-
-        #check if self.cv is a number
-        if isinstance(self.cv, int) or isinstance(self.cv, float):
+                                
+                    self._preprocessing_pipeline = sklearn.pipeline.Pipeline(pipeline_steps)
+    
+                X = self._preprocessing_pipeline.fit_transform(X, y)
+                
+            else:
+                self._preprocessing_pipeline = None
+    
+            #_, y = sklearn.utils.check_X_y(X, y, y_numeric=True)
+    
+            #Set up the configuation dictionaries and the search spaces
+    
+            #check if self.cv is a number
+            if isinstance(self.cv, int) or isinstance(self.cv, float):
+                if self.classification:
+                    self.cv_gen = sklearn.model_selection.StratifiedKFold(n_splits=self.cv, shuffle=True, random_state=self.random_state)
+                else:
+                    self.cv_gen = sklearn.model_selection.KFold(n_splits=self.cv, shuffle=True, random_state=self.random_state)
+    
+            else:
+                self.cv_gen = sklearn.model_selection.check_cv(self.cv, y, classifier=self.classification)
+    
+    
+    
+            n_samples= int(math.floor(X.shape[0]/n_folds))
+            n_features=X.shape[1]
+    
+            if isinstance(X, pd.DataFrame):
+                self.feature_names = X.columns
+            else:
+                self.feature_names = None
+    
+    
+    
+            def objective_function(pipeline_individual,
+                                                X,
+                                                y,
+                                                is_classification=self.classification,
+                                                scorers= self._scorers,
+                                                cv=self.cv_gen,
+                                                other_objective_functions=self.other_objective_functions,
+                                                export_graphpipeline=self.export_graphpipeline,
+                                                memory=self.memory,
+                                                **kwargs):
+                return objective_function_generator(
+                    pipeline_individual,
+                    X,
+                    y,
+                    is_classification=is_classification,
+                    scorers= scorers,
+                    cv=cv,
+                    other_objective_functions=other_objective_functions,
+                    export_graphpipeline=export_graphpipeline,
+                    memory=memory,
+                    **kwargs,
+                )
+    
+    
+    
+            if self.threshold_evaluation_pruning is not None or self.selection_evaluation_pruning is not None:
+                evaluation_early_stop_steps = self.cv
+            else:
+                evaluation_early_stop_steps = None
+    
+            if self.scatter:
+                X_future = _client.scatter(X)
+                y_future = _client.scatter(y)
+            else:
+                X_future = X
+                y_future = y
+    
             if self.classification:
-                self.cv_gen = sklearn.model_selection.StratifiedKFold(n_splits=self.cv, shuffle=True, random_state=self.random_state)
+                n_classes = len(np.unique(y))
             else:
-                self.cv_gen = sklearn.model_selection.KFold(n_splits=self.cv, shuffle=True, random_state=self.random_state)
-
-        else:
-            self.cv_gen = sklearn.model_selection.check_cv(self.cv, y, classifier=self.classification)
-
-
-
-        n_samples= int(math.floor(X.shape[0]/n_folds))
-        n_features=X.shape[1]
-
-        if isinstance(X, pd.DataFrame):
-            self.feature_names = X.columns
-        else:
-            self.feature_names = None
-
-
-
-        def objective_function(pipeline_individual,
-                                            X,
-                                            y,
-                                            is_classification=self.classification,
-                                            scorers= self._scorers,
-                                            cv=self.cv_gen,
-                                            other_objective_functions=self.other_objective_functions,
-                                            export_graphpipeline=self.export_graphpipeline,
-                                            memory=self.memory,
-                                            **kwargs):
-            return objective_function_generator(
-                pipeline_individual,
-                X,
-                y,
-                is_classification=is_classification,
-                scorers= scorers,
-                cv=cv,
-                other_objective_functions=other_objective_functions,
-                export_graphpipeline=export_graphpipeline,
-                memory=memory,
-                **kwargs,
-            )
-
-
-
-        if self.threshold_evaluation_pruning is not None or self.selection_evaluation_pruning is not None:
-            evaluation_early_stop_steps = self.cv
-        else:
-            evaluation_early_stop_steps = None
-
-        if self.scatter:
-            X_future = _client.scatter(X)
-            y_future = _client.scatter(y)
-        else:
-            X_future = X
-            y_future = y
-
-        if self.classification:
-            n_classes = len(np.unique(y))
-        else:
-            n_classes = None
-
-        get_search_space_params = {"n_classes": n_classes, 
-                        "n_samples":len(y), 
-                        "n_features":X.shape[1], 
-                        "random_state":self.random_state}
-
-        self._search_space = get_template_search_spaces(self.search_space, classification=self.classification, inner_predictors=True, **get_search_space_params)
-
-
-        # TODO : Add check for empty values in X and if so, add imputation to the search space
-        # make this depend on self.preprocessing
-        # if check_empty_values(X):
-        #     from sklearn.experimental import enable_iterative_imputer
-
-        #     from ConfigSpace import ConfigurationSpace
-        #     from ConfigSpace import ConfigurationSpace, Integer, Float, Categorical, Normal
-        #     iterative_imputer_cs = ConfigurationSpace(
-        #         space = {
-        #             'n_nearest_features' : Categorical('n_nearest_features', [100]),
-        #             'initial_strategy' : Categorical('initial_strategy', ['mean','median', 'most_frequent', ]),
-        #             'add_indicator' : Categorical('add_indicator', [True, False]),
-        #         }
-        #     )
-
-        #     imputation_search = tpot.search_spaces.pipelines.ChoicePipeline([
-        #         tpot.config.get_search_space("SimpleImputer"),
-        #         tpot.search_spaces.nodes.EstimatorNode(sklearn.impute.IterativeImputer, iterative_imputer_cs)
-        #     ])
-
-
-
-
-        #     self.search_space_final = tpot.search_spaces.pipelines.SequentialPipeline(search_spaces=[ imputation_search, self._search_space], memory="sklearn_pipeline_memory")
-        # else:
-        #     self.search_space_final = self._search_space
-
-        self.search_space_final = self._search_space
-
-        def ind_generator(rng):
-            rng = np.random.default_rng(rng)
-            while True:
-                yield self.search_space_final.generate(rng)
-
-        #If warm start and we have an evolver instance, use the existing one
-        if not(self.warm_start and self._evolver_instance is not None):
-            self._evolver_instance = self._evolver(   individual_generator=ind_generator(self.rng),
-                                            objective_functions= [objective_function],
-                                            objective_function_weights = self.objective_function_weights,
-                                            objective_names=self.objective_names,
-                                            bigger_is_better = self.bigger_is_better,
-                                            population_size= self.population_size,
-                                            generations=self.generations,
-                                            initial_population_size = self._initial_population_size,
-                                            n_jobs=self.n_jobs,
-                                            verbose = self.verbose,
-                                            max_time_mins =      self.max_time_mins ,
-                                            max_eval_time_mins = self.max_eval_time_mins,
-
-                                            periodic_checkpoint_folder = self.periodic_checkpoint_folder,
-                                            threshold_evaluation_pruning = self.threshold_evaluation_pruning,
-                                            threshold_evaluation_scaling =  self.threshold_evaluation_scaling,
-                                            min_history_threshold = self.min_history_threshold,
-
-                                            selection_evaluation_pruning = self.selection_evaluation_pruning,
-                                            selection_evaluation_scaling =  self.selection_evaluation_scaling,
-                                            evaluation_early_stop_steps = evaluation_early_stop_steps,
-
-                                            early_stop_tol = self.early_stop_tol,
-                                            early_stop= self.early_stop,
-
-                                            budget_range = self.budget_range,
-                                            budget_scaling = self.budget_scaling,
-                                            generations_until_end_budget = self.generations_until_end_budget,
-
-                                            population_scaling = self.population_scaling,
-                                            generations_until_end_population = self.generations_until_end_population,
-                                            stepwise_steps = self.stepwise_steps,
-                                            client = _client,
-                                            objective_kwargs = {"X": X_future, "y": y_future},
-                                            survival_selector=self.survival_selector,
-                                            parent_selector=self.parent_selector,
-                                            survival_percentage = self.survival_percentage,
-                                            crossover_probability = self.crossover_probability,
-                                            mutate_probability = self.mutate_probability,
-                                            mutate_then_crossover_probability= self.mutate_then_crossover_probability,
-                                            crossover_then_mutate_probability= self.crossover_then_mutate_probability,
-
-                                            rng=self.rng,
-                                            )
-
-
-        self._evolver_instance.optimize()
-        #self._evolver_instance.population.update_pareto_fronts(self.objective_names, self.objective_function_weights)
-        self.make_evaluated_individuals()
-
-
-
-
-        tpot.utils.get_pareto_frontier(self.evaluated_individuals, column_names=self.objective_names, weights=self.objective_function_weights)
-
-        if validation_strategy == 'reshuffled':
-            best_pareto_front_idx = list(self.pareto_front.index)
-            best_pareto_front = list(self.pareto_front.loc[best_pareto_front_idx]['Individual'])
-
-            #reshuffle rows
-            X, y = sklearn.utils.shuffle(X, y, random_state=self.random_state)
-
-            if self.scatter:
-                X_future = _client.scatter(X)
-                y_future = _client.scatter(y)
-            else:
-                X_future = X
-                y_future = y
-
-            val_objective_function_list = [lambda   ind,
-                                                    X,
-                                                    y,
-                                                    is_classification=self.classification,
-                                                    scorers= self._scorers,
-                                                    cv=self.cv_gen,
-                                                    other_objective_functions=self.other_objective_functions,
-                                                    export_graphpipeline=self.export_graphpipeline,
-                                                    memory=self.memory,
-                                                    **kwargs: objective_function_generator(
-                                                                                                ind,
-                                                                                                X,
-                                                                                                y,
-                                                                                                is_classification=is_classification,
-                                                                                                scorers= scorers,
-                                                                                                cv=cv,
-                                                                                                other_objective_functions=other_objective_functions,
-                                                                                                export_graphpipeline=export_graphpipeline,
-                                                                                                memory=memory,
-                                                                                                **kwargs,
-                                                                                                )]
-
-            objective_kwargs = {"X": X_future, "y": y_future}
-            val_scores, start_times, end_times, eval_errors = tpot.utils.eval_utils.parallel_eval_objective_list(best_pareto_front, val_objective_function_list, verbose=self.verbose, max_eval_time_mins=self.max_eval_time_mins, n_expected_columns=len(self.objective_names), client=_client, **objective_kwargs)
-
-
-
-            val_objective_names = ['validation_'+name for name in self.objective_names]
-            self.objective_names_for_selection = val_objective_names
-            self.evaluated_individuals.loc[best_pareto_front_idx,val_objective_names] = val_scores
-            self.evaluated_individuals.loc[best_pareto_front_idx,'validation_start_times'] = start_times
-            self.evaluated_individuals.loc[best_pareto_front_idx,'validation_end_times'] = end_times
-            self.evaluated_individuals.loc[best_pareto_front_idx,'validation_eval_errors'] = eval_errors
-
-            self.evaluated_individuals["Validation_Pareto_Front"] = tpot.utils.get_pareto_frontier(self.evaluated_individuals, column_names=val_objective_names, weights=self.objective_function_weights)
-
-
-        elif validation_strategy == 'split':
-
-
-            if self.scatter:
-                X_future = _client.scatter(X)
-                y_future = _client.scatter(y)
-                X_val_future = _client.scatter(X_val)
-                y_val_future = _client.scatter(y_val)
-            else:
-                X_future = X
-                y_future = y
-                X_val_future = X_val
-                y_val_future = y_val
-
-            objective_kwargs = {"X": X_future, "y": y_future, "X_val" : X_val_future, "y_val":y_val_future }
-
-            best_pareto_front_idx = list(self.pareto_front.index)
-            best_pareto_front = list(self.pareto_front.loc[best_pareto_front_idx]['Individual'])
-            val_objective_function_list = [lambda   ind,
-                                                    X,
-                                                    y,
-                                                    X_val,
-                                                    y_val,
-                                                    scorers= self._scorers,
-                                                    other_objective_functions=self.other_objective_functions,
-                                                    export_graphpipeline=self.export_graphpipeline,
-                                                    memory=self.memory,
-                                                    **kwargs: val_objective_function_generator(
-                                                        ind,
+                n_classes = None
+    
+            get_search_space_params = {"n_classes": n_classes, 
+                            "n_samples":len(y), 
+                            "n_features":X.shape[1], 
+                            "random_state":self.random_state}
+    
+            self._search_space = get_template_search_spaces(self.search_space, classification=self.classification, inner_predictors=True, **get_search_space_params)
+    
+    
+            # TODO : Add check for empty values in X and if so, add imputation to the search space
+            # make this depend on self.preprocessing
+            # if check_empty_values(X):
+            #     from sklearn.experimental import enable_iterative_imputer
+    
+            #     from ConfigSpace import ConfigurationSpace
+            #     from ConfigSpace import ConfigurationSpace, Integer, Float, Categorical, Normal
+            #     iterative_imputer_cs = ConfigurationSpace(
+            #         space = {
+            #             'n_nearest_features' : Categorical('n_nearest_features', [100]),
+            #             'initial_strategy' : Categorical('initial_strategy', ['mean','median', 'most_frequent', ]),
+            #             'add_indicator' : Categorical('add_indicator', [True, False]),
+            #         }
+            #     )
+    
+            #     imputation_search = tpot.search_spaces.pipelines.ChoicePipeline([
+            #         tpot.config.get_search_space("SimpleImputer"),
+            #         tpot.search_spaces.nodes.EstimatorNode(sklearn.impute.IterativeImputer, iterative_imputer_cs)
+            #     ])
+    
+    
+    
+    
+            #     self.search_space_final = tpot.search_spaces.pipelines.SequentialPipeline(search_spaces=[ imputation_search, self._search_space], memory="sklearn_pipeline_memory")
+            # else:
+            #     self.search_space_final = self._search_space
+    
+            self.search_space_final = self._search_space
+    
+            def ind_generator(rng):
+                rng = np.random.default_rng(rng)
+                while True:
+                    yield self.search_space_final.generate(rng)
+    
+            #If warm start and we have an evolver instance, use the existing one
+            if not(self.warm_start and self._evolver_instance is not None):
+                self._evolver_instance = self._evolver(   individual_generator=ind_generator(self.rng),
+                                                objective_functions= [objective_function],
+                                                objective_function_weights = self.objective_function_weights,
+                                                objective_names=self.objective_names,
+                                                bigger_is_better = self.bigger_is_better,
+                                                population_size= self.population_size,
+                                                generations=self.generations,
+                                                initial_population_size = self._initial_population_size,
+                                                n_jobs=self.n_jobs,
+                                                verbose = self.verbose,
+                                                max_time_mins =      self.max_time_mins ,
+                                                max_eval_time_mins = self.max_eval_time_mins,
+    
+                                                periodic_checkpoint_folder = self.periodic_checkpoint_folder,
+                                                threshold_evaluation_pruning = self.threshold_evaluation_pruning,
+                                                threshold_evaluation_scaling =  self.threshold_evaluation_scaling,
+                                                min_history_threshold = self.min_history_threshold,
+    
+                                                selection_evaluation_pruning = self.selection_evaluation_pruning,
+                                                selection_evaluation_scaling =  self.selection_evaluation_scaling,
+                                                evaluation_early_stop_steps = evaluation_early_stop_steps,
+    
+                                                early_stop_tol = self.early_stop_tol,
+                                                early_stop= self.early_stop,
+    
+                                                budget_range = self.budget_range,
+                                                budget_scaling = self.budget_scaling,
+                                                generations_until_end_budget = self.generations_until_end_budget,
+    
+                                                population_scaling = self.population_scaling,
+                                                generations_until_end_population = self.generations_until_end_population,
+                                                stepwise_steps = self.stepwise_steps,
+                                                client = _client,
+                                                objective_kwargs = {"X": X_future, "y": y_future},
+                                                survival_selector=self.survival_selector,
+                                                parent_selector=self.parent_selector,
+                                                survival_percentage = self.survival_percentage,
+                                                crossover_probability = self.crossover_probability,
+                                                mutate_probability = self.mutate_probability,
+                                                mutate_then_crossover_probability= self.mutate_then_crossover_probability,
+                                                crossover_then_mutate_probability= self.crossover_then_mutate_probability,
+    
+                                                rng=self.rng,
+                                                )
+    
+    
+            self._evolver_instance.optimize()
+            #self._evolver_instance.population.update_pareto_fronts(self.objective_names, self.objective_function_weights)
+            self.make_evaluated_individuals()
+    
+    
+    
+    
+            tpot.utils.get_pareto_frontier(self.evaluated_individuals, column_names=self.objective_names, weights=self.objective_function_weights)
+    
+            if validation_strategy == 'reshuffled':
+                best_pareto_front_idx = list(self.pareto_front.index)
+                best_pareto_front = list(self.pareto_front.loc[best_pareto_front_idx]['Individual'])
+    
+                #reshuffle rows
+                X, y = sklearn.utils.shuffle(X, y, random_state=self.random_state)
+    
+                if self.scatter:
+                    X_future = _client.scatter(X)
+                    y_future = _client.scatter(y)
+                else:
+                    X_future = X
+                    y_future = y
+    
+                val_objective_function_list = [lambda   ind,
+                                                        X,
+                                                        y,
+                                                        is_classification=self.classification,
+                                                        scorers= self._scorers,
+                                                        cv=self.cv_gen,
+                                                        other_objective_functions=self.other_objective_functions,
+                                                        export_graphpipeline=self.export_graphpipeline,
+                                                        memory=self.memory,
+                                                        **kwargs: objective_function_generator(
+                                                                                                    ind,
+                                                                                                    X,
+                                                                                                    y,
+                                                                                                    is_classification=is_classification,
+                                                                                                    scorers= scorers,
+                                                                                                    cv=cv,
+                                                                                                    other_objective_functions=other_objective_functions,
+                                                                                                    export_graphpipeline=export_graphpipeline,
+                                                                                                    memory=memory,
+                                                                                                    **kwargs,
+                                                                                                    )]
+    
+                objective_kwargs = {"X": X_future, "y": y_future}
+                val_scores, start_times, end_times, eval_errors = tpot.utils.eval_utils.parallel_eval_objective_list(best_pareto_front, val_objective_function_list, verbose=self.verbose, max_eval_time_mins=self.max_eval_time_mins, n_expected_columns=len(self.objective_names), client=_client, **objective_kwargs)
+    
+    
+    
+                val_objective_names = ['validation_'+name for name in self.objective_names]
+                self.objective_names_for_selection = val_objective_names
+                self.evaluated_individuals.loc[best_pareto_front_idx,val_objective_names] = val_scores
+                self.evaluated_individuals.loc[best_pareto_front_idx,'validation_start_times'] = start_times
+                self.evaluated_individuals.loc[best_pareto_front_idx,'validation_end_times'] = end_times
+                self.evaluated_individuals.loc[best_pareto_front_idx,'validation_eval_errors'] = eval_errors
+    
+                self.evaluated_individuals["Validation_Pareto_Front"] = tpot.utils.get_pareto_frontier(self.evaluated_individuals, column_names=val_objective_names, weights=self.objective_function_weights)
+    
+    
+            elif validation_strategy == 'split':
+    
+    
+                if self.scatter:
+                    X_future = _client.scatter(X)
+                    y_future = _client.scatter(y)
+                    X_val_future = _client.scatter(X_val)
+                    y_val_future = _client.scatter(y_val)
+                else:
+                    X_future = X
+                    y_future = y
+                    X_val_future = X_val
+                    y_val_future = y_val
+    
+                objective_kwargs = {"X": X_future, "y": y_future, "X_val" : X_val_future, "y_val":y_val_future }
+    
+                best_pareto_front_idx = list(self.pareto_front.index)
+                best_pareto_front = list(self.pareto_front.loc[best_pareto_front_idx]['Individual'])
+                val_objective_function_list = [lambda   ind,
                                                         X,
                                                         y,
                                                         X_val,
                                                         y_val,
-                                                        scorers= scorers,
-                                                        other_objective_functions=other_objective_functions,
-                                                        export_graphpipeline=export_graphpipeline,
-                                                        memory=memory,
-                                                        **kwargs,
-                                                        )]
-
-            val_scores, start_times, end_times, eval_errors = tpot.utils.eval_utils.parallel_eval_objective_list(best_pareto_front, val_objective_function_list, verbose=self.verbose, max_eval_time_mins=self.max_eval_time_mins, n_expected_columns=len(self.objective_names), client=_client, **objective_kwargs)
-
-
-
-            val_objective_names = ['validation_'+name for name in self.objective_names]
-            self.objective_names_for_selection = val_objective_names
-            self.evaluated_individuals.loc[best_pareto_front_idx,val_objective_names] = val_scores
-            self.evaluated_individuals.loc[best_pareto_front_idx,'validation_start_times'] = start_times
-            self.evaluated_individuals.loc[best_pareto_front_idx,'validation_end_times'] = end_times
-            self.evaluated_individuals.loc[best_pareto_front_idx,'validation_eval_errors'] = eval_errors
-
-            self.evaluated_individuals["Validation_Pareto_Front"] = tpot.utils.get_pareto_frontier(self.evaluated_individuals, column_names=val_objective_names, weights=self.objective_function_weights)
-        
-        else:
-            self.objective_names_for_selection = self.objective_names
-        
-        val_scores = self.evaluated_individuals[self.evaluated_individuals[self.objective_names_for_selection].isna().all(1).ne(True)][self.objective_names_for_selection]
-        weighted_scores = val_scores*self.objective_function_weights
-
-        if self.bigger_is_better:
-            best_indices = list(weighted_scores.sort_values(by=self.objective_names_for_selection, ascending=False).index)
-        else:
-            best_indices = list(weighted_scores.sort_values(by=self.objective_names_for_selection, ascending=True).index)
-
-        for best_idx in best_indices:
-
-            best_individual = self.evaluated_individuals.loc[best_idx]['Individual']
-            self.selected_best_score =  self.evaluated_individuals.loc[best_idx]
-
-
-            #TODO
-            #best_individual_pipeline = best_individual.export_pipeline(memory=self.memory, cross_val_predict_cv=self.cross_val_predict_cv)
-            if self.export_graphpipeline:
-                best_individual_pipeline = best_individual.export_flattened_graphpipeline(memory=self.memory)
+                                                        scorers= self._scorers,
+                                                        other_objective_functions=self.other_objective_functions,
+                                                        export_graphpipeline=self.export_graphpipeline,
+                                                        memory=self.memory,
+                                                        **kwargs: val_objective_function_generator(
+                                                            ind,
+                                                            X,
+                                                            y,
+                                                            X_val,
+                                                            y_val,
+                                                            scorers= scorers,
+                                                            other_objective_functions=other_objective_functions,
+                                                            export_graphpipeline=export_graphpipeline,
+                                                            memory=memory,
+                                                            **kwargs,
+                                                            )]
+    
+                val_scores, start_times, end_times, eval_errors = tpot.utils.eval_utils.parallel_eval_objective_list(best_pareto_front, val_objective_function_list, verbose=self.verbose, max_eval_time_mins=self.max_eval_time_mins, n_expected_columns=len(self.objective_names), client=_client, **objective_kwargs)
+    
+    
+    
+                val_objective_names = ['validation_'+name for name in self.objective_names]
+                self.objective_names_for_selection = val_objective_names
+                self.evaluated_individuals.loc[best_pareto_front_idx,val_objective_names] = val_scores
+                self.evaluated_individuals.loc[best_pareto_front_idx,'validation_start_times'] = start_times
+                self.evaluated_individuals.loc[best_pareto_front_idx,'validation_end_times'] = end_times
+                self.evaluated_individuals.loc[best_pareto_front_idx,'validation_eval_errors'] = eval_errors
+    
+                self.evaluated_individuals["Validation_Pareto_Front"] = tpot.utils.get_pareto_frontier(self.evaluated_individuals, column_names=val_objective_names, weights=self.objective_function_weights)
+            
             else:
-                best_individual_pipeline = best_individual.export_pipeline(memory=self.memory)
-
-            if self.preprocessing:
-                self.fitted_pipeline_ = sklearn.pipeline.make_pipeline(sklearn.base.clone(self._preprocessing_pipeline), best_individual_pipeline )
+                self.objective_names_for_selection = self.objective_names
+            
+            val_scores = self.evaluated_individuals[self.evaluated_individuals[self.objective_names_for_selection].isna().all(1).ne(True)][self.objective_names_for_selection]
+            weighted_scores = val_scores*self.objective_function_weights
+    
+            if self.bigger_is_better:
+                best_indices = list(weighted_scores.sort_values(by=self.objective_names_for_selection, ascending=False).index)
             else:
-                self.fitted_pipeline_ = best_individual_pipeline
-
-            try:
-                self.fitted_pipeline_.fit(X_original,y_original) #TODO use y_original as well?
-                break
-            except Exception as e:
-                if self.verbose >= 4:
-                    warnings.warn("Final pipeline failed to fit. Rarely, the pipeline might work on the objective function but fail on the full dataset. Generally due to interactions with different features being selected or transformations having different properties. Trying next pipeline")
-                    print(e)
-                continue
-
-
-        if self.client is None: #no client was passed in
-            #close cluster and client
-            # _client.close()
-            # cluster.close()
-            try:
-                _client.shutdown()
-                cluster.close()
-            #catch exception
-            except Exception as e:
-                print("Error shutting down client and cluster")
-                Warning(e)
-
-        return self
+                best_indices = list(weighted_scores.sort_values(by=self.objective_names_for_selection, ascending=True).index)
+    
+            for best_idx in best_indices:
+    
+                best_individual = self.evaluated_individuals.loc[best_idx]['Individual']
+                self.selected_best_score =  self.evaluated_individuals.loc[best_idx]
+    
+    
+                #TODO
+                #best_individual_pipeline = best_individual.export_pipeline(memory=self.memory, cross_val_predict_cv=self.cross_val_predict_cv)
+                if self.export_graphpipeline:
+                    best_individual_pipeline = best_individual.export_flattened_graphpipeline(memory=self.memory)
+                else:
+                    best_individual_pipeline = best_individual.export_pipeline(memory=self.memory)
+    
+                if self.preprocessing:
+                    self.fitted_pipeline_ = sklearn.pipeline.make_pipeline(sklearn.base.clone(self._preprocessing_pipeline), best_individual_pipeline )
+                else:
+                    self.fitted_pipeline_ = best_individual_pipeline
+    
+                try:
+                    self.fitted_pipeline_.fit(X_original,y_original) #TODO use y_original as well?
+                    break
+                except Exception as e:
+                    if self.verbose >= 4:
+                        warnings.warn("Final pipeline failed to fit. Rarely, the pipeline might work on the objective function but fail on the full dataset. Generally due to interactions with different features being selected or transformations having different properties. Trying next pipeline")
+                        print(e)
+                    continue
+    
+    
+                return self
+        finally:
+            # Always cleanup the client and cluster if TPOT created them, regardless of success or failure
+            if self.client is None and cluster is not None: #no client was passed in
+                #close cluster and client
+                # _client.close()
+                # cluster.close()
+                try:
+                    _client.shutdown()
+                    cluster.close()
+                #catch exception
+                except Exception as e:
+                    print("Error shutting down client and cluster")
+                    Warning(e)
 
     def _estimator_has(attr):
         '''Check if we can delegate a method to the underlying estimator.
