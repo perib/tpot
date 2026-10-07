@@ -3007,7 +3007,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-849">849</a></span>
 <span class="normal"><a href="#__codelineno-0-850">850</a></span>
 <span class="normal"><a href="#__codelineno-0-851">851</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-822" name="__codelineno-0-822"></a><span class="k">class</span><span class="w"> </span><span class="nc">GraphKey</span><span class="p">():</span>
-<a id="__codelineno-0-823" name="__codelineno-0-823"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-823" name="__codelineno-0-823"></a><span class="w">    </span><span class="sd">'''</span>
 <a id="__codelineno-0-824" name="__codelineno-0-824"></a><span class="sd">    A class that can be used as a key for a graph.</span>
 <a id="__codelineno-0-825" name="__codelineno-0-825"></a>
 <a id="__codelineno-0-826" name="__codelineno-0-826"></a><span class="sd">    Parameters</span>
@@ -3016,9 +3016,9 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-829" name="__codelineno-0-829"></a><span class="sd">        The graph to use as a key. Node Attributes are used for the hash.</span>
 <a id="__codelineno-0-830" name="__codelineno-0-830"></a><span class="sd">    matched_label : (str)</span>
 <a id="__codelineno-0-831" name="__codelineno-0-831"></a><span class="sd">        The node attribute to consider for the hash.</span>
-<a id="__codelineno-0-832" name="__codelineno-0-832"></a><span class="sd">    &#39;&#39;&#39;</span>
+<a id="__codelineno-0-832" name="__codelineno-0-832"></a><span class="sd">    '''</span>
 <a id="__codelineno-0-833" name="__codelineno-0-833"></a>
-<a id="__codelineno-0-834" name="__codelineno-0-834"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">matched_label</span><span class="o">=</span><span class="s1">&#39;label&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span><span class="c1">#[&#39;hyperparameters&#39;, &#39;method_class&#39;]) -&gt; None:</span>
+<a id="__codelineno-0-834" name="__codelineno-0-834"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">matched_label</span><span class="o">=</span><span class="s1">'label'</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span><span class="c1">#['hyperparameters', 'method_class']) -&gt; None:</span>
 <a id="__codelineno-0-835" name="__codelineno-0-835"></a>
 <a id="__codelineno-0-836" name="__codelineno-0-836"></a>
 <a id="__codelineno-0-837" name="__codelineno-0-837"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span>
@@ -3896,7 +3896,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <span class="normal"><a href="#__codelineno-0-719">719</a></span>
 <span class="normal"><a href="#__codelineno-0-720">720</a></span>
 <span class="normal"><a href="#__codelineno-0-721">721</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-51" name="__codelineno-0-51"></a><span class="k">class</span><span class="w"> </span><span class="nc">GraphPipelineIndividual</span><span class="p">(</span><span class="n">SklearnIndividual</span><span class="p">):</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">        Defines a search space of pipelines in the shape of a Directed Acyclic Graphs. The search spaces for root, leaf, and inner nodes can be defined separately if desired.</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        Each graph will have a single root serving as the final estimator which is drawn from the `root_search_space`. If the `leaf_search_space` is defined, all leaves </span>
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        in the pipeline will be drawn from that search space. If the `leaf_search_space` is not defined, all leaves will be drawn from the `inner_search_space`.</span>
@@ -3925,7 +3925,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-78" name="__codelineno-0-78"></a><span class="sd">            Determines the cross-validation splitting strategy used in inner classifiers or regressors</span>
 <a id="__codelineno-0-79" name="__codelineno-0-79"></a>
 <a id="__codelineno-0-80" name="__codelineno-0-80"></a><span class="sd">        method: str, optional</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">            The prediction method to use for the inner classifiers or regressors. If &#39;auto&#39;, it will try to use predict_proba, decision_function, or predict in that order.</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81"></a><span class="sd">            The prediction method to use for the inner classifiers or regressors. If 'auto', it will try to use predict_proba, decision_function, or predict in that order.</span>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">        memory: str or object with the joblib.Memory interface, optional</span>
 <a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">            Used to cache the input and outputs of nodes to prevent refitting or computationally heavy transformations. By default, no caching is performed. If a string is given, it is the path to the caching directory.</span>
@@ -3938,7 +3938,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="sd">        rng: int, RandomState instance or None, optional</span>
 <a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">            Seed for sampling the first graph instance. </span>
 <a id="__codelineno-0-93" name="__codelineno-0-93"></a>
-<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">        """</span>
 <a id="__codelineno-0-95" name="__codelineno-0-95"></a>
 <a id="__codelineno-0-96" name="__codelineno-0-96"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
 <a id="__codelineno-0-97" name="__codelineno-0-97"></a>            <span class="bp">self</span><span class="p">,</span>  
@@ -3948,7 +3948,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-101" name="__codelineno-0-101"></a>            <span class="n">max_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
 <a id="__codelineno-0-102" name="__codelineno-0-102"></a>            <span class="n">crossover_same_depth</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-103" name="__codelineno-0-103"></a>            <span class="n">cross_val_predict_cv</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">#signature function(estimator, X, y=none)</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104"></a>            <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104"></a>            <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
 <a id="__codelineno-0-105" name="__codelineno-0-105"></a>            <span class="n">use_label_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-106" name="__codelineno-0-106"></a>            <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <a id="__codelineno-0-107" name="__codelineno-0-107"></a>
@@ -4003,18 +4003,18 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-156" name="__codelineno-0-156"></a>                    <span class="nb">print</span><span class="p">(</span><span class="n">mutate_method</span><span class="p">)</span>
 <a id="__codelineno-0-157" name="__codelineno-0-157"></a>
 <a id="__codelineno-0-158" name="__codelineno-0-158"></a>                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-<a id="__codelineno-0-159" name="__codelineno-0-159"></a>                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;lost root something went wrong with &#39;</span><span class="p">,</span> <span class="n">mutate_method</span><span class="p">)</span>
+<a id="__codelineno-0-159" name="__codelineno-0-159"></a>                        <span class="nb">print</span><span class="p">(</span><span class="s1">'lost root something went wrong with '</span><span class="p">,</span> <span class="n">mutate_method</span><span class="p">)</span>
 <a id="__codelineno-0-160" name="__codelineno-0-160"></a>
 <a id="__codelineno-0-161" name="__codelineno-0-161"></a>                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-162" name="__codelineno-0-162"></a>                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;root has parents &#39;</span><span class="p">,</span> <span class="n">mutate_method</span><span class="p">)</span>
+<a id="__codelineno-0-162" name="__codelineno-0-162"></a>                        <span class="nb">print</span><span class="p">(</span><span class="s1">'root has parents '</span><span class="p">,</span> <span class="n">mutate_method</span><span class="p">)</span>
 <a id="__codelineno-0-163" name="__codelineno-0-163"></a>
 <a id="__codelineno-0-164" name="__codelineno-0-164"></a>                    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">n</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">ancestors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">]):</span>
-<a id="__codelineno-0-165" name="__codelineno-0-165"></a>                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a node is connecting to itself...&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-165" name="__codelineno-0-165"></a>                        <span class="nb">print</span><span class="p">(</span><span class="s1">'a node is connecting to itself...'</span><span class="p">)</span>
 <a id="__codelineno-0-166" name="__codelineno-0-166"></a>
 <a id="__codelineno-0-167" name="__codelineno-0-167"></a>                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__debug</span><span class="p">:</span>
 <a id="__codelineno-0-168" name="__codelineno-0-168"></a>                        <span class="k">try</span><span class="p">:</span>
 <a id="__codelineno-0-169" name="__codelineno-0-169"></a>                            <span class="n">nx</span><span class="o">.</span><span class="n">find_cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-<a id="__codelineno-0-170" name="__codelineno-0-170"></a>                            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;something went wrong with &#39;</span><span class="p">,</span> <span class="n">mutate_method</span><span class="p">)</span>
+<a id="__codelineno-0-170" name="__codelineno-0-170"></a>                            <span class="nb">print</span><span class="p">(</span><span class="s1">'something went wrong with '</span><span class="p">,</span> <span class="n">mutate_method</span><span class="p">)</span>
 <a id="__codelineno-0-171" name="__codelineno-0-171"></a>                        <span class="k">except</span><span class="p">:</span>
 <a id="__codelineno-0-172" name="__codelineno-0-172"></a>                            <span class="k">pass</span>
 <a id="__codelineno-0-173" name="__codelineno-0-173"></a>
@@ -4032,7 +4032,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-185" name="__codelineno-0-185"></a>            <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">sorted_nodes_list</span><span class="p">)</span> <span class="c1">#TODO: sort by number of children and/or parents? bias model one way or another</span>
 <a id="__codelineno-0-186" name="__codelineno-0-186"></a>            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">sorted_nodes_list</span><span class="p">:</span>
 <a id="__codelineno-0-187" name="__codelineno-0-187"></a>                <span class="c1">#if leafs are protected, check if node is a leaf</span>
-<a id="__codelineno-0-188" name="__codelineno-0-188"></a>                <span class="c1">#if node is a leaf, skip because we don&#39;t want to add node on top of node</span>
+<a id="__codelineno-0-188" name="__codelineno-0-188"></a>                <span class="c1">#if node is a leaf, skip because we don't want to add node on top of node</span>
 <a id="__codelineno-0-189" name="__codelineno-0-189"></a>                <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">leaf_search_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="c1">#if leafs are protected</span>
 <a id="__codelineno-0-190" name="__codelineno-0-190"></a>                    <span class="ow">and</span>   <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span> <span class="c1">#if node is leaf</span>
 <a id="__codelineno-0-191" name="__codelineno-0-191"></a>                    <span class="ow">and</span>  <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c1">#except if node is root, in which case we want to add a leaf even if it happens to be a leaf too</span>
@@ -4053,9 +4053,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-206" name="__codelineno-0-206"></a>        <span class="k">return</span> <span class="kc">False</span>
 <a id="__codelineno-0-207" name="__codelineno-0-207"></a>
 <a id="__codelineno-0-208" name="__codelineno-0-208"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_mutate_insert_inner_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="w">        </span><span class="sd">"""</span>
 <a id="__codelineno-0-210" name="__codelineno-0-210"></a><span class="sd">        Finds an edge in the graph and inserts a new node between the two nodes. Removes the edge between the two nodes.</span>
-<a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">        """</span>
 <a id="__codelineno-0-212" name="__codelineno-0-212"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-213" name="__codelineno-0-213"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">():</span>
 <a id="__codelineno-0-214" name="__codelineno-0-214"></a>            <span class="n">sorted_nodes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
@@ -4083,10 +4083,10 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-236" name="__codelineno-0-236"></a>
 <a id="__codelineno-0-237" name="__codelineno-0-237"></a>
 <a id="__codelineno-0-238" name="__codelineno-0-238"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_mutate_remove_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-239" name="__codelineno-0-239"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-240" name="__codelineno-0-240"></a><span class="sd">        Removes a randomly chosen node and connects its parents to its children.</span>
-<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">        If the node is the only leaf for an inner node and &#39;leaf_search_space&#39; is not none, we do not remove it.</span>
-<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-241" name="__codelineno-0-241"></a><span class="sd">        If the node is the only leaf for an inner node and 'leaf_search_space' is not none, we do not remove it.</span>
+<a id="__codelineno-0-242" name="__codelineno-0-242"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-243" name="__codelineno-0-243"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-244" name="__codelineno-0-244"></a>        <span class="n">nodes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
 <a id="__codelineno-0-245" name="__codelineno-0-245"></a>        <span class="n">nodes_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
@@ -4119,9 +4119,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-272" name="__codelineno-0-272"></a>
 <a id="__codelineno-0-273" name="__codelineno-0-273"></a>
 <a id="__codelineno-0-274" name="__codelineno-0-274"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_mutate_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-275" name="__codelineno-0-275"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-275" name="__codelineno-0-275"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-276" name="__codelineno-0-276"></a><span class="sd">        Mutates the hyperparameters for a randomly chosen node in the graph.</span>
-<a id="__codelineno-0-277" name="__codelineno-0-277"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-277" name="__codelineno-0-277"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-278" name="__codelineno-0-278"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-279" name="__codelineno-0-279"></a>        <span class="n">sorted_nodes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
 <a id="__codelineno-0-280" name="__codelineno-0-280"></a>        <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">sorted_nodes_list</span><span class="p">)</span>
@@ -4132,9 +4132,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-285" name="__codelineno-0-285"></a>        <span class="k">return</span> <span class="kc">False</span>
 <a id="__codelineno-0-286" name="__codelineno-0-286"></a>
 <a id="__codelineno-0-287" name="__codelineno-0-287"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_mutate_remove_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-288" name="__codelineno-0-288"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-288" name="__codelineno-0-288"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-289" name="__codelineno-0-289"></a><span class="sd">        Deletes an edge as long as deleting that edge does not make the graph disconnected.</span>
-<a id="__codelineno-0-290" name="__codelineno-0-290"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-290" name="__codelineno-0-290"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-291" name="__codelineno-0-291"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-292" name="__codelineno-0-292"></a>        <span class="n">sorted_nodes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
 <a id="__codelineno-0-293" name="__codelineno-0-293"></a>        <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">sorted_nodes_list</span><span class="p">)</span>
@@ -4152,9 +4152,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-305" name="__codelineno-0-305"></a>        <span class="k">return</span> <span class="kc">False</span>   
 <a id="__codelineno-0-306" name="__codelineno-0-306"></a>
 <a id="__codelineno-0-307" name="__codelineno-0-307"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_mutate_add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-308" name="__codelineno-0-308"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-308" name="__codelineno-0-308"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-309" name="__codelineno-0-309"></a><span class="sd">        Randomly add an edge from a node to another node that is not an ancestor of the first node.</span>
-<a id="__codelineno-0-310" name="__codelineno-0-310"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-311" name="__codelineno-0-311"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-312" name="__codelineno-0-312"></a>        <span class="n">sorted_nodes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
 <a id="__codelineno-0-313" name="__codelineno-0-313"></a>        <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">sorted_nodes_list</span><span class="p">)</span>
@@ -4175,10 +4175,10 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-328" name="__codelineno-0-328"></a>        <span class="k">return</span> <span class="kc">False</span>
 <a id="__codelineno-0-329" name="__codelineno-0-329"></a>
 <a id="__codelineno-0-330" name="__codelineno-0-330"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_mutate_insert_bypass_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-331" name="__codelineno-0-331"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-0-332" name="__codelineno-0-332"></a><span class="sd">        Pick two nodes (doesn&#39;t necessarily need to be connected). Create a new node. connect one node to the new node and the new node to the other node.</span>
+<a id="__codelineno-0-331" name="__codelineno-0-331"></a><span class="w">        </span><span class="sd">"""</span>
+<a id="__codelineno-0-332" name="__codelineno-0-332"></a><span class="sd">        Pick two nodes (doesn't necessarily need to be connected). Create a new node. connect one node to the new node and the new node to the other node.</span>
 <a id="__codelineno-0-333" name="__codelineno-0-333"></a><span class="sd">        Does not remove any edges.</span>
-<a id="__codelineno-0-334" name="__codelineno-0-334"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-334" name="__codelineno-0-334"></a><span class="sd">        """</span>
 <a id="__codelineno-0-335" name="__codelineno-0-335"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-336" name="__codelineno-0-336"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">():</span>
 <a id="__codelineno-0-337" name="__codelineno-0-337"></a>            <span class="n">sorted_nodes_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
@@ -4203,13 +4203,13 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-356" name="__codelineno-0-356"></a>
 <a id="__codelineno-0-357" name="__codelineno-0-357"></a>
 <a id="__codelineno-0-358" name="__codelineno-0-358"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ind2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-359" name="__codelineno-0-359"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-359" name="__codelineno-0-359"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-360" name="__codelineno-0-360"></a><span class="sd">        self is the first individual, ind2 is the second individual</span>
 <a id="__codelineno-0-361" name="__codelineno-0-361"></a><span class="sd">        If crossover_same_depth, it will select graphindividuals at the same recursive depth.</span>
 <a id="__codelineno-0-362" name="__codelineno-0-362"></a><span class="sd">        Otherwise, it will select graphindividuals randomly from the entire graph and its subgraphs.</span>
 <a id="__codelineno-0-363" name="__codelineno-0-363"></a>
 <a id="__codelineno-0-364" name="__codelineno-0-364"></a><span class="sd">        This does not impact graphs without subgraphs. And it does not impacts nodes that are not graphindividuals. Cros</span>
-<a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-366" name="__codelineno-0-366"></a>
 <a id="__codelineno-0-367" name="__codelineno-0-367"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-368" name="__codelineno-0-368"></a>
@@ -4226,7 +4226,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-379" name="__codelineno-0-379"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__debug</span><span class="p">:</span>
 <a id="__codelineno-0-380" name="__codelineno-0-380"></a>            <span class="k">try</span><span class="p">:</span>
 <a id="__codelineno-0-381" name="__codelineno-0-381"></a>                <span class="n">nx</span><span class="o">.</span><span class="n">find_cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-<a id="__codelineno-0-382" name="__codelineno-0-382"></a>                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;something went wrong with &#39;</span><span class="p">,</span> <span class="n">crossover_method</span><span class="p">)</span>
+<a id="__codelineno-0-382" name="__codelineno-0-382"></a>                <span class="nb">print</span><span class="p">(</span><span class="s1">'something went wrong with '</span><span class="p">,</span> <span class="n">crossover_method</span><span class="p">)</span>
 <a id="__codelineno-0-383" name="__codelineno-0-383"></a>            <span class="k">except</span><span class="p">:</span>
 <a id="__codelineno-0-384" name="__codelineno-0-384"></a>                <span class="k">pass</span>
 <a id="__codelineno-0-385" name="__codelineno-0-385"></a>
@@ -4237,9 +4237,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-390" name="__codelineno-0-390"></a>
 <a id="__codelineno-0-391" name="__codelineno-0-391"></a>
 <a id="__codelineno-0-392" name="__codelineno-0-392"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_crossover_swap_branch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-393" name="__codelineno-0-393"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-393" name="__codelineno-0-393"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-394" name="__codelineno-0-394"></a><span class="sd">        swaps a branch from parent1 with a branch from parent2. does not modify parent2</span>
-<a id="__codelineno-0-395" name="__codelineno-0-395"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-395" name="__codelineno-0-395"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-396" name="__codelineno-0-396"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-397" name="__codelineno-0-397"></a>
 <a id="__codelineno-0-398" name="__codelineno-0-398"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossover_same_depth</span><span class="p">:</span>
@@ -4252,7 +4252,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-405" name="__codelineno-0-405"></a>            <span class="k">if</span> <span class="n">node1</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="ow">or</span> <span class="n">node2</span> <span class="ow">is</span> <span class="n">G2</span><span class="o">.</span><span class="n">root</span><span class="p">:</span> <span class="c1">#dont want to add root as inner node</span>
 <a id="__codelineno-0-406" name="__codelineno-0-406"></a>                <span class="k">continue</span>
 <a id="__codelineno-0-407" name="__codelineno-0-407"></a>
-<a id="__codelineno-0-408" name="__codelineno-0-408"></a>            <span class="c1">#check if node1 is a leaf and leafs are protected, don&#39;t add an input to the leave</span>
+<a id="__codelineno-0-408" name="__codelineno-0-408"></a>            <span class="c1">#check if node1 is a leaf and leafs are protected, don't add an input to the leave</span>
 <a id="__codelineno-0-409" name="__codelineno-0-409"></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaf_search_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#if we are protecting leaves,</span>
 <a id="__codelineno-0-410" name="__codelineno-0-410"></a>                <span class="n">node1_is_leaf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node1</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span>
 <a id="__codelineno-0-411" name="__codelineno-0-411"></a>                <span class="n">node2_is_leaf</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">G2</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node2</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span>
@@ -4289,9 +4289,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-442" name="__codelineno-0-442"></a>
 <a id="__codelineno-0-443" name="__codelineno-0-443"></a>
 <a id="__codelineno-0-444" name="__codelineno-0-444"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_crossover_take_branch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-445" name="__codelineno-0-445"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-445" name="__codelineno-0-445"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-446" name="__codelineno-0-446"></a><span class="sd">        Takes a subgraph from Parent2 and add it to a randomly chosen node in Parent1.</span>
-<a id="__codelineno-0-447" name="__codelineno-0-447"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-447" name="__codelineno-0-447"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-448" name="__codelineno-0-448"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-449" name="__codelineno-0-449"></a>
 <a id="__codelineno-0-450" name="__codelineno-0-450"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossover_same_depth</span><span class="p">:</span>
@@ -4305,13 +4305,13 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-458" name="__codelineno-0-458"></a>                <span class="k">continue</span>
 <a id="__codelineno-0-459" name="__codelineno-0-459"></a>
 <a id="__codelineno-0-460" name="__codelineno-0-460"></a>
-<a id="__codelineno-0-461" name="__codelineno-0-461"></a>            <span class="c1">#check if node1 is a leaf and leafs are protected, don&#39;t add an input to the leave</span>
+<a id="__codelineno-0-461" name="__codelineno-0-461"></a>            <span class="c1">#check if node1 is a leaf and leafs are protected, don't add an input to the leave</span>
 <a id="__codelineno-0-462" name="__codelineno-0-462"></a>            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">leaf_search_space</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node1</span><span class="p">)))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-0-463" name="__codelineno-0-463"></a>                <span class="k">continue</span>
 <a id="__codelineno-0-464" name="__codelineno-0-464"></a>
 <a id="__codelineno-0-465" name="__codelineno-0-465"></a>            <span class="c1">#icheck if node2 is graph individual</span>
 <a id="__codelineno-0-466" name="__codelineno-0-466"></a>            <span class="c1"># if isinstance(node2,GraphIndividual):</span>
-<a id="__codelineno-0-467" name="__codelineno-0-467"></a>            <span class="c1">#     if not ((isinstance(node2,GraphIndividual) and (&quot;Recursive&quot; in self.inner_search_space or &quot;Recursive&quot; in self.leaf_search_space))):</span>
+<a id="__codelineno-0-467" name="__codelineno-0-467"></a>            <span class="c1">#     if not ((isinstance(node2,GraphIndividual) and ("Recursive" in self.inner_search_space or "Recursive" in self.leaf_search_space))):</span>
 <a id="__codelineno-0-468" name="__codelineno-0-468"></a>            <span class="c1">#         continue</span>
 <a id="__codelineno-0-469" name="__codelineno-0-469"></a>
 <a id="__codelineno-0-470" name="__codelineno-0-470"></a>            <span class="c1">#isolating the branch</span>
@@ -4336,9 +4336,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-489" name="__codelineno-0-489"></a>
 <a id="__codelineno-0-490" name="__codelineno-0-490"></a>
 <a id="__codelineno-0-491" name="__codelineno-0-491"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_crossover_nodes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-492" name="__codelineno-0-492"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-492" name="__codelineno-0-492"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-493" name="__codelineno-0-493"></a><span class="sd">        Swaps the hyperparamters of one randomly chosen node in Parent1 with the hyperparameters of randomly chosen node in Parent2.</span>
-<a id="__codelineno-0-494" name="__codelineno-0-494"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-494" name="__codelineno-0-494"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-495" name="__codelineno-0-495"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-496" name="__codelineno-0-496"></a>
 <a id="__codelineno-0-497" name="__codelineno-0-497"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossover_same_depth</span><span class="p">:</span>
@@ -4406,9 +4406,9 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-559" name="__codelineno-0-559"></a>
 <a id="__codelineno-0-560" name="__codelineno-0-560"></a>    <span class="c1">#TODO edit so that G2 is not modified</span>
 <a id="__codelineno-0-561" name="__codelineno-0-561"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_crossover_swap_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">G2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-562" name="__codelineno-0-562"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-562" name="__codelineno-0-562"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-563" name="__codelineno-0-563"></a><span class="sd">        Swaps randomly chosen node from Parent1 with a randomly chosen node from Parent2.</span>
-<a id="__codelineno-0-564" name="__codelineno-0-564"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-564" name="__codelineno-0-564"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-565" name="__codelineno-0-565"></a>        <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-566" name="__codelineno-0-566"></a>
 <a id="__codelineno-0-567" name="__codelineno-0-567"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossover_same_depth</span><span class="p">:</span>
@@ -4490,7 +4490,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-643" name="__codelineno-0-643"></a>            <span class="n">found_unique_label</span> <span class="o">=</span> <span class="kc">False</span>
 <a id="__codelineno-0-644" name="__codelineno-0-644"></a>            <span class="n">i</span><span class="o">=</span><span class="mi">1</span>
 <a id="__codelineno-0-645" name="__codelineno-0-645"></a>            <span class="k">while</span> <span class="ow">not</span> <span class="n">found_unique_label</span><span class="p">:</span>
-<a id="__codelineno-0-646" name="__codelineno-0-646"></a>                <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{0}</span><span class="s2">_</span><span class="si">{1}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">this_pipeline_node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-0-646" name="__codelineno-0-646"></a>                <span class="n">label</span> <span class="o">=</span> <span class="s2">"</span><span class="si">{0}</span><span class="s2">_</span><span class="si">{1}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">this_pipeline_node</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
 <a id="__codelineno-0-647" name="__codelineno-0-647"></a>                <span class="k">if</span> <span class="n">label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">label_to_instance</span><span class="p">:</span>
 <a id="__codelineno-0-648" name="__codelineno-0-648"></a>                    <span class="n">found_unique_label</span> <span class="o">=</span> <span class="kc">True</span>
 <a id="__codelineno-0-649" name="__codelineno-0-649"></a>                <span class="k">else</span><span class="p">:</span>
@@ -4502,7 +4502,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-655" name="__codelineno-0-655"></a>        <span class="n">estimator_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">relabel_nodes</span><span class="p">(</span><span class="n">estimator_graph</span><span class="p">,</span> <span class="n">label_remapping</span><span class="p">)</span>
 <a id="__codelineno-0-656" name="__codelineno-0-656"></a>
 <a id="__codelineno-0-657" name="__codelineno-0-657"></a>        <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">label_to_instance</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-0-658" name="__codelineno-0-658"></a>            <span class="n">estimator_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s2">&quot;instance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">instance</span>
+<a id="__codelineno-0-658" name="__codelineno-0-658"></a>            <span class="n">estimator_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">label</span><span class="p">][</span><span class="s2">"instance"</span><span class="p">]</span> <span class="o">=</span> <span class="n">instance</span>
 <a id="__codelineno-0-659" name="__codelineno-0-659"></a>
 <a id="__codelineno-0-660" name="__codelineno-0-660"></a>        <span class="k">return</span> <span class="n">tpot</span><span class="o">.</span><span class="n">GraphPipeline</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">estimator_graph</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">,</span> <span class="n">use_label_encoder</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_label_encoder</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">cross_val_predict_cv</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cross_val_predict_cv</span><span class="p">)</span>
 <a id="__codelineno-0-661" name="__codelineno-0-661"></a>
@@ -4515,43 +4515,43 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-668" name="__codelineno-0-668"></a>        <span class="k">except</span><span class="p">:</span>
 <a id="__codelineno-0-669" name="__codelineno-0-669"></a>            <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shell_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <a id="__codelineno-0-670" name="__codelineno-0-670"></a>        <span class="c1"># nodes</span>
-<a id="__codelineno-0-671" name="__codelineno-0-671"></a>        <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;edgecolors&#39;</span><span class="p">:</span> <span class="s1">&#39;tab:gray&#39;</span><span class="p">,</span> <span class="s1">&#39;node_size&#39;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">}</span>
+<a id="__codelineno-0-671" name="__codelineno-0-671"></a>        <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'edgecolors'</span><span class="p">:</span> <span class="s1">'tab:gray'</span><span class="p">,</span> <span class="s1">'node_size'</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span> <span class="s1">'alpha'</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">}</span>
 <a id="__codelineno-0-672" name="__codelineno-0-672"></a>        <span class="n">nodelist</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-<a id="__codelineno-0-673" name="__codelineno-0-673"></a>        <span class="n">node_color</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;recursive depth&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">]</span>
+<a id="__codelineno-0-673" name="__codelineno-0-673"></a>        <span class="n">node_color</span> <span class="o">=</span> <span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Set1</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">'recursive depth'</span><span class="p">])</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">G</span><span class="p">]</span>
 <a id="__codelineno-0-674" name="__codelineno-0-674"></a>
 <a id="__codelineno-0-675" name="__codelineno-0-675"></a>        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <a id="__codelineno-0-676" name="__codelineno-0-676"></a>
 <a id="__codelineno-0-677" name="__codelineno-0-677"></a>        <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_color</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>  <span class="o">**</span><span class="n">options</span><span class="p">)</span>
 <a id="__codelineno-0-678" name="__codelineno-0-678"></a>
 <a id="__codelineno-0-679" name="__codelineno-0-679"></a>
-<a id="__codelineno-0-680" name="__codelineno-0-680"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;edgelist = []</span>
+<a id="__codelineno-0-680" name="__codelineno-0-680"></a><span class="w">        </span><span class="sd">'''edgelist = []</span>
 <a id="__codelineno-0-681" name="__codelineno-0-681"></a><span class="sd">        for n in n1.node_set:</span>
 <a id="__codelineno-0-682" name="__codelineno-0-682"></a><span class="sd">            for child in n.children:</span>
-<a id="__codelineno-0-683" name="__codelineno-0-683"></a><span class="sd">                edgelist.append((n,child))&#39;&#39;&#39;</span>
+<a id="__codelineno-0-683" name="__codelineno-0-683"></a><span class="sd">                edgelist.append((n,child))'''</span>
 <a id="__codelineno-0-684" name="__codelineno-0-684"></a>
 <a id="__codelineno-0-685" name="__codelineno-0-685"></a>        <span class="c1"># edges</span>
 <a id="__codelineno-0-686" name="__codelineno-0-686"></a>        <span class="c1">#nx.draw_networkx_edges(G, pos, width=3.0, arrows=True)</span>
-<a id="__codelineno-0-687" name="__codelineno-0-687"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;nx.draw_networkx_edges(</span>
+<a id="__codelineno-0-687" name="__codelineno-0-687"></a><span class="w">        </span><span class="sd">'''nx.draw_networkx_edges(</span>
 <a id="__codelineno-0-688" name="__codelineno-0-688"></a><span class="sd">            G,</span>
 <a id="__codelineno-0-689" name="__codelineno-0-689"></a><span class="sd">            pos,</span>
 <a id="__codelineno-0-690" name="__codelineno-0-690"></a><span class="sd">            edgelist=[edgelist],</span>
 <a id="__codelineno-0-691" name="__codelineno-0-691"></a><span class="sd">            width=8,</span>
 <a id="__codelineno-0-692" name="__codelineno-0-692"></a><span class="sd">            alpha=0.5,</span>
-<a id="__codelineno-0-693" name="__codelineno-0-693"></a><span class="sd">            edge_color=&#39;tab:red&#39;,</span>
-<a id="__codelineno-0-694" name="__codelineno-0-694"></a><span class="sd">        )&#39;&#39;&#39;</span>
+<a id="__codelineno-0-693" name="__codelineno-0-693"></a><span class="sd">            edge_color='tab:red',</span>
+<a id="__codelineno-0-694" name="__codelineno-0-694"></a><span class="sd">        )'''</span>
 <a id="__codelineno-0-695" name="__codelineno-0-695"></a>
 <a id="__codelineno-0-696" name="__codelineno-0-696"></a>
 <a id="__codelineno-0-697" name="__codelineno-0-697"></a>
 <a id="__codelineno-0-698" name="__codelineno-0-698"></a>        <span class="c1"># some math labels</span>
 <a id="__codelineno-0-699" name="__codelineno-0-699"></a>        <span class="n">labels</span> <span class="o">=</span> <span class="p">{}</span>
 <a id="__codelineno-0-700" name="__codelineno-0-700"></a>        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">):</span>
-<a id="__codelineno-0-701" name="__codelineno-0-701"></a>            <span class="n">labels</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">method_class</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">hyperparameters</span><span class="p">)</span>
+<a id="__codelineno-0-701" name="__codelineno-0-701"></a>            <span class="n">labels</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">method_class</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">hyperparameters</span><span class="p">)</span>
 <a id="__codelineno-0-702" name="__codelineno-0-702"></a>
 <a id="__codelineno-0-703" name="__codelineno-0-703"></a>
-<a id="__codelineno-0-704" name="__codelineno-0-704"></a>        <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-704" name="__codelineno-0-704"></a>        <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">'black'</span><span class="p">)</span>
 <a id="__codelineno-0-705" name="__codelineno-0-705"></a>
 <a id="__codelineno-0-706" name="__codelineno-0-706"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<a id="__codelineno-0-707" name="__codelineno-0-707"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-707" name="__codelineno-0-707"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">'off'</span><span class="p">)</span>
 <a id="__codelineno-0-708" name="__codelineno-0-708"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <a id="__codelineno-0-709" name="__codelineno-0-709"></a>
 <a id="__codelineno-0-710" name="__codelineno-0-710"></a>
@@ -4560,7 +4560,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-713" name="__codelineno-0-713"></a>            <span class="c1">#copy self.graph</span>
 <a id="__codelineno-0-714" name="__codelineno-0-714"></a>            <span class="n">new_graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <a id="__codelineno-0-715" name="__codelineno-0-715"></a>            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">new_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-<a id="__codelineno-0-716" name="__codelineno-0-716"></a>                <span class="n">new_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">unique_id</span><span class="p">()</span>
+<a id="__codelineno-0-716" name="__codelineno-0-716"></a>                <span class="n">new_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="s1">'label'</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">unique_id</span><span class="p">()</span>
 <a id="__codelineno-0-717" name="__codelineno-0-717"></a>
 <a id="__codelineno-0-718" name="__codelineno-0-718"></a>            <span class="n">new_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">convert_node_labels_to_integers</span><span class="p">(</span><span class="n">new_graph</span><span class="p">)</span>
 <a id="__codelineno-0-719" name="__codelineno-0-719"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">graphkey</span> <span class="o">=</span> <span class="n">GraphKey</span><span class="p">(</span><span class="n">new_graph</span><span class="p">)</span>
@@ -4631,13 +4631,13 @@ Otherwise, it will select graphindividuals randomly from the entire graph and it
 <span class="normal"><a href="#__codelineno-0-387">387</a></span>
 <span class="normal"><a href="#__codelineno-0-388">388</a></span>
 <span class="normal"><a href="#__codelineno-0-389">389</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-358" name="__codelineno-0-358"></a><span class="k">def</span><span class="w"> </span><span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ind2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-359" name="__codelineno-0-359"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-359" name="__codelineno-0-359"></a><span class="w">    </span><span class="sd">'''</span>
 <a id="__codelineno-0-360" name="__codelineno-0-360"></a><span class="sd">    self is the first individual, ind2 is the second individual</span>
 <a id="__codelineno-0-361" name="__codelineno-0-361"></a><span class="sd">    If crossover_same_depth, it will select graphindividuals at the same recursive depth.</span>
 <a id="__codelineno-0-362" name="__codelineno-0-362"></a><span class="sd">    Otherwise, it will select graphindividuals randomly from the entire graph and its subgraphs.</span>
 <a id="__codelineno-0-363" name="__codelineno-0-363"></a>
 <a id="__codelineno-0-364" name="__codelineno-0-364"></a><span class="sd">    This does not impact graphs without subgraphs. And it does not impacts nodes that are not graphindividuals. Cros</span>
-<a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="sd">    &#39;&#39;&#39;</span>
+<a id="__codelineno-0-365" name="__codelineno-0-365"></a><span class="sd">    '''</span>
 <a id="__codelineno-0-366" name="__codelineno-0-366"></a>
 <a id="__codelineno-0-367" name="__codelineno-0-367"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-368" name="__codelineno-0-368"></a>
@@ -4654,7 +4654,7 @@ Otherwise, it will select graphindividuals randomly from the entire graph and it
 <a id="__codelineno-0-379" name="__codelineno-0-379"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">__debug</span><span class="p">:</span>
 <a id="__codelineno-0-380" name="__codelineno-0-380"></a>        <span class="k">try</span><span class="p">:</span>
 <a id="__codelineno-0-381" name="__codelineno-0-381"></a>            <span class="n">nx</span><span class="o">.</span><span class="n">find_cycle</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
-<a id="__codelineno-0-382" name="__codelineno-0-382"></a>            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;something went wrong with &#39;</span><span class="p">,</span> <span class="n">crossover_method</span><span class="p">)</span>
+<a id="__codelineno-0-382" name="__codelineno-0-382"></a>            <span class="nb">print</span><span class="p">(</span><span class="s1">'something went wrong with '</span><span class="p">,</span> <span class="n">crossover_method</span><span class="p">)</span>
 <a id="__codelineno-0-383" name="__codelineno-0-383"></a>        <span class="k">except</span><span class="p">:</span>
 <a id="__codelineno-0-384" name="__codelineno-0-384"></a>            <span class="k">pass</span>
 <a id="__codelineno-0-385" name="__codelineno-0-385"></a>
@@ -4794,10 +4794,10 @@ Otherwise, it will select graphindividuals randomly from the entire graph and it
 <a id="__codelineno-0-729" name="__codelineno-0-729"></a>        <span class="n">max_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
 <a id="__codelineno-0-730" name="__codelineno-0-730"></a>        <span class="n">crossover_same_depth</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-731" name="__codelineno-0-731"></a>        <span class="n">cross_val_predict_cv</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">#signature function(estimator, X, y=none)</span>
-<a id="__codelineno-0-732" name="__codelineno-0-732"></a>        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-732" name="__codelineno-0-732"></a>        <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
 <a id="__codelineno-0-733" name="__codelineno-0-733"></a>        <span class="n">use_label_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <a id="__codelineno-0-734" name="__codelineno-0-734"></a>
-<a id="__codelineno-0-735" name="__codelineno-0-735"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-735" name="__codelineno-0-735"></a><span class="w">        </span><span class="sd">"""</span>
 <a id="__codelineno-0-736" name="__codelineno-0-736"></a><span class="sd">        Defines a search space of pipelines in the shape of a Directed Acyclic Graphs. The search spaces for root, leaf, and inner nodes can be defined separately if desired.</span>
 <a id="__codelineno-0-737" name="__codelineno-0-737"></a><span class="sd">        Each graph will have a single root serving as the final estimator which is drawn from the `root_search_space`. If the `leaf_search_space` is defined, all leaves </span>
 <a id="__codelineno-0-738" name="__codelineno-0-738"></a><span class="sd">        in the pipeline will be drawn from that search space. If the `leaf_search_space` is not defined, all leaves will be drawn from the `inner_search_space`.</span>
@@ -4830,7 +4830,7 @@ Otherwise, it will select graphindividuals randomly from the entire graph and it
 <a id="__codelineno-0-765" name="__codelineno-0-765"></a><span class="sd">                    However, the output to the next node will come from cross_val_predict with the specified number of folds.</span>
 <a id="__codelineno-0-766" name="__codelineno-0-766"></a>
 <a id="__codelineno-0-767" name="__codelineno-0-767"></a><span class="sd">        method: str, optional</span>
-<a id="__codelineno-0-768" name="__codelineno-0-768"></a><span class="sd">            The prediction method to use for the inner classifiers or regressors. If &#39;auto&#39;, it will try to use predict_proba, decision_function, or predict in that order.</span>
+<a id="__codelineno-0-768" name="__codelineno-0-768"></a><span class="sd">            The prediction method to use for the inner classifiers or regressors. If 'auto', it will try to use predict_proba, decision_function, or predict in that order.</span>
 <a id="__codelineno-0-769" name="__codelineno-0-769"></a>
 <a id="__codelineno-0-770" name="__codelineno-0-770"></a><span class="sd">        memory: str or object with the joblib.Memory interface, optional</span>
 <a id="__codelineno-0-771" name="__codelineno-0-771"></a><span class="sd">            Used to cache the input and outputs of nodes to prevent refitting or computationally heavy transformations. By default, no caching is performed. If a string is given, it is the path to the caching directory.</span>
@@ -4840,7 +4840,7 @@ Otherwise, it will select graphindividuals randomly from the entire graph and it
 <a id="__codelineno-0-775" name="__codelineno-0-775"></a><span class="sd">            Mainly useful for classifiers (XGBoost) that require labels to be ints from 0 to N.</span>
 <a id="__codelineno-0-776" name="__codelineno-0-776"></a><span class="sd">            Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encoder is used.</span>
 <a id="__codelineno-0-777" name="__codelineno-0-777"></a>
-<a id="__codelineno-0-778" name="__codelineno-0-778"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-778" name="__codelineno-0-778"></a><span class="sd">        """</span>
 <a id="__codelineno-0-779" name="__codelineno-0-779"></a>
 <a id="__codelineno-0-780" name="__codelineno-0-780"></a>
 <a id="__codelineno-0-781" name="__codelineno-0-781"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">root_search_space</span> <span class="o">=</span> <span class="n">root_search_space</span>
@@ -4898,7 +4898,7 @@ Otherwise, it will select graphindividuals randomly from the entire graph and it
 
 
 <h3 id="tpot.search_spaces.pipelines.graph.GraphSearchPipeline.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">root_search_space</span><span class="p">,</span> <span class="n">leaf_search_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inner_search_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">crossover_same_depth</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cross_val_predict_cv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">use_label_encoder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">root_search_space</span><span class="p">,</span> <span class="n">leaf_search_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inner_search_space</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_size</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">crossover_same_depth</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">cross_val_predict_cv</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">'auto'</span><span class="p">,</span> <span class="n">use_label_encoder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 <a href="#tpot.search_spaces.pipelines.graph.GraphSearchPipeline.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -5122,10 +5122,10 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-729" name="__codelineno-0-729"></a>    <span class="n">max_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span>
 <a id="__codelineno-0-730" name="__codelineno-0-730"></a>    <span class="n">crossover_same_depth</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <a id="__codelineno-0-731" name="__codelineno-0-731"></a>    <span class="n">cross_val_predict_cv</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">#signature function(estimator, X, y=none)</span>
-<a id="__codelineno-0-732" name="__codelineno-0-732"></a>    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+<a id="__codelineno-0-732" name="__codelineno-0-732"></a>    <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">'auto'</span><span class="p">,</span>
 <a id="__codelineno-0-733" name="__codelineno-0-733"></a>    <span class="n">use_label_encoder</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
 <a id="__codelineno-0-734" name="__codelineno-0-734"></a>
-<a id="__codelineno-0-735" name="__codelineno-0-735"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-735" name="__codelineno-0-735"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-736" name="__codelineno-0-736"></a><span class="sd">    Defines a search space of pipelines in the shape of a Directed Acyclic Graphs. The search spaces for root, leaf, and inner nodes can be defined separately if desired.</span>
 <a id="__codelineno-0-737" name="__codelineno-0-737"></a><span class="sd">    Each graph will have a single root serving as the final estimator which is drawn from the `root_search_space`. If the `leaf_search_space` is defined, all leaves </span>
 <a id="__codelineno-0-738" name="__codelineno-0-738"></a><span class="sd">    in the pipeline will be drawn from that search space. If the `leaf_search_space` is not defined, all leaves will be drawn from the `inner_search_space`.</span>
@@ -5158,7 +5158,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-765" name="__codelineno-0-765"></a><span class="sd">                However, the output to the next node will come from cross_val_predict with the specified number of folds.</span>
 <a id="__codelineno-0-766" name="__codelineno-0-766"></a>
 <a id="__codelineno-0-767" name="__codelineno-0-767"></a><span class="sd">    method: str, optional</span>
-<a id="__codelineno-0-768" name="__codelineno-0-768"></a><span class="sd">        The prediction method to use for the inner classifiers or regressors. If &#39;auto&#39;, it will try to use predict_proba, decision_function, or predict in that order.</span>
+<a id="__codelineno-0-768" name="__codelineno-0-768"></a><span class="sd">        The prediction method to use for the inner classifiers or regressors. If 'auto', it will try to use predict_proba, decision_function, or predict in that order.</span>
 <a id="__codelineno-0-769" name="__codelineno-0-769"></a>
 <a id="__codelineno-0-770" name="__codelineno-0-770"></a><span class="sd">    memory: str or object with the joblib.Memory interface, optional</span>
 <a id="__codelineno-0-771" name="__codelineno-0-771"></a><span class="sd">        Used to cache the input and outputs of nodes to prevent refitting or computationally heavy transformations. By default, no caching is performed. If a string is given, it is the path to the caching directory.</span>
@@ -5168,7 +5168,7 @@ Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encod
 <a id="__codelineno-0-775" name="__codelineno-0-775"></a><span class="sd">        Mainly useful for classifiers (XGBoost) that require labels to be ints from 0 to N.</span>
 <a id="__codelineno-0-776" name="__codelineno-0-776"></a><span class="sd">        Can also be a sklearn.preprocessing.LabelEncoder object. If so, that label encoder is used.</span>
 <a id="__codelineno-0-777" name="__codelineno-0-777"></a>
-<a id="__codelineno-0-778" name="__codelineno-0-778"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-778" name="__codelineno-0-778"></a><span class="sd">    """</span>
 <a id="__codelineno-0-779" name="__codelineno-0-779"></a>
 <a id="__codelineno-0-780" name="__codelineno-0-780"></a>
 <a id="__codelineno-0-781" name="__codelineno-0-781"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">root_search_space</span> <span class="o">=</span> <span class="n">root_search_space</span>

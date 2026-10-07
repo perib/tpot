@@ -2911,14 +2911,14 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-119">119</a></span>
 <span class="normal"><a href="#__codelineno-0-120">120</a></span>
 <span class="normal"><a href="#__codelineno-0-121">121</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-98" name="__codelineno-0-98"></a><span class="k">def</span><span class="w"> </span><span class="nf">is_pareto_efficient</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">return_mask</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">    Find the pareto-efficient points</span>
 <a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="sd">    :param scores: An (n_points, n_scores) array</span>
 <a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">    :param return_mask: True to return a mask</span>
 <a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">    :return: An array of indices of pareto-efficient points.</span>
 <a id="__codelineno-0-104" name="__codelineno-0-104"></a><span class="sd">        If return_mask is True, this will be an (n_points, ) boolean array</span>
 <a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">        Otherwise it will be a (n_efficient_points, ) integer array of indices.</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106"></a><span class="sd">    """</span>
 <a id="__codelineno-0-107" name="__codelineno-0-107"></a>    <span class="n">is_efficient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <a id="__codelineno-0-108" name="__codelineno-0-108"></a>    <span class="n">n_points</span> <span class="o">=</span> <span class="n">scores</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-0-109" name="__codelineno-0-109"></a>    <span class="n">next_point_index</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Next index in the is_efficient array to search for</span>

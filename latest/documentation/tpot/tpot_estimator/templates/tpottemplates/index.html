@@ -3193,8 +3193,8 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-573">573</a></span>
 <span class="normal"><a href="#__codelineno-0-574">574</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-308" name="__codelineno-0-308"></a><span class="k">class</span><span class="w"> </span><span class="nc">TPOTClassifier</span><span class="p">(</span><span class="n">TPOTEstimator</span><span class="p">):</span>
 <a id="__codelineno-0-309" name="__codelineno-0-309"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>       <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-310" name="__codelineno-0-310"></a>                        <span class="n">search_space</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-311" name="__codelineno-0-311"></a>                        <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;roc_auc_ovr&#39;</span><span class="p">],</span> 
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a>                        <span class="n">search_space</span> <span class="o">=</span> <span class="s2">"linear"</span><span class="p">,</span>
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>                        <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">'roc_auc_ovr'</span><span class="p">],</span> 
 <a id="__codelineno-0-312" name="__codelineno-0-312"></a>                        <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <a id="__codelineno-0-313" name="__codelineno-0-313"></a>                        <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
 <a id="__codelineno-0-314" name="__codelineno-0-314"></a>                        <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="c1">#tpot.objectives.estimator_objective_functions.number_of_nodes_objective],</span>
@@ -3207,7 +3207,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-321" name="__codelineno-0-321"></a>                        <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> 
 <a id="__codelineno-0-322" name="__codelineno-0-322"></a>                        <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
 <a id="__codelineno-0-323" name="__codelineno-0-323"></a>                        <span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-324" name="__codelineno-0-324"></a>                        <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-324" name="__codelineno-0-324"></a>                        <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">,</span>
 <a id="__codelineno-0-325" name="__codelineno-0-325"></a>                        <span class="n">validation_fraction</span> <span class="o">=</span> <span class="mf">.2</span><span class="p">,</span> 
 <a id="__codelineno-0-326" name="__codelineno-0-326"></a>                        <span class="n">early_stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-327" name="__codelineno-0-327"></a>                        <span class="n">warm_start</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -3220,7 +3220,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-334" name="__codelineno-0-334"></a>                        <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-335" name="__codelineno-0-335"></a>
 <a id="__codelineno-0-336" name="__codelineno-0-336"></a>        <span class="p">):</span>
-<a id="__codelineno-0-337" name="__codelineno-0-337"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-337" name="__codelineno-0-337"></a><span class="w">        </span><span class="sd">"""</span>
 <a id="__codelineno-0-338" name="__codelineno-0-338"></a><span class="sd">        An sklearn baseestimator that uses genetic programming to optimize a classification pipeline.</span>
 <a id="__codelineno-0-339" name="__codelineno-0-339"></a><span class="sd">        For more parameters, see the TPOTEstimator class.</span>
 <a id="__codelineno-0-340" name="__codelineno-0-340"></a>
@@ -3231,7 +3231,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-345" name="__codelineno-0-345"></a><span class="sd">            - String : The default search space to use for the optimization.</span>
 <a id="__codelineno-0-346" name="__codelineno-0-346"></a><span class="sd">            | String     | Description      |</span>
 <a id="__codelineno-0-347" name="__codelineno-0-347"></a><span class="sd">            | :---        |    :----:   |</span>
-<a id="__codelineno-0-348" name="__codelineno-0-348"></a><span class="sd">            | linear  | A linear pipeline with the structure of &quot;Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor.&quot; For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
+<a id="__codelineno-0-348" name="__codelineno-0-348"></a><span class="sd">            | linear  | A linear pipeline with the structure of "Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor." For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
 <a id="__codelineno-0-349" name="__codelineno-0-349"></a><span class="sd">            | linear-light | Same search space as linear, but without the inner classifier/regressor layer and with a reduced set of faster running estimators. |</span>
 <a id="__codelineno-0-350" name="__codelineno-0-350"></a><span class="sd">            | graph | TPOT will optimize a pipeline in the shape of a directed acyclic graph. The nodes of the graph can include selectors, scalers, transformers, or classifiers/regressors (inner classifiers/regressors can optionally be not included). This will return a custom GraphPipeline rather than an sklearn Pipeline. More details in Tutorial 6. |</span>
 <a id="__codelineno-0-351" name="__codelineno-0-351"></a><span class="sd">            | graph-light | Same as graph search space, but without the inner classifier/regressors and with a reduced set of faster running estimators. |</span>
@@ -3283,7 +3283,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-397" name="__codelineno-0-397"></a><span class="sd">            If supplied, pipeline will cache each transformer after calling fit with joblib.Memory. This feature</span>
 <a id="__codelineno-0-398" name="__codelineno-0-398"></a><span class="sd">            is used to avoid computing the fit transformers within a pipeline if the parameters</span>
 <a id="__codelineno-0-399" name="__codelineno-0-399"></a><span class="sd">            and input data are identical with another fitted pipeline during optimization process.</span>
-<a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="sd">            - String &#39;auto&#39;:</span>
+<a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="sd">            - String 'auto':</span>
 <a id="__codelineno-0-401" name="__codelineno-0-401"></a><span class="sd">                TPOT uses memory caching with a temporary directory and cleans it up upon shutdown.</span>
 <a id="__codelineno-0-402" name="__codelineno-0-402"></a><span class="sd">            - String path of a caching directory</span>
 <a id="__codelineno-0-403" name="__codelineno-0-403"></a><span class="sd">                TPOT uses memory caching with the provided directory and TPOT does NOT clean</span>
@@ -3301,7 +3301,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-415" name="__codelineno-0-415"></a><span class="sd">            - bool : If True, will use a default preprocessing pipeline which includes imputation followed by one hot encoding.</span>
 <a id="__codelineno-0-416" name="__codelineno-0-416"></a><span class="sd">            - Pipeline : If an instance of a pipeline is given, will use that pipeline as the preprocessing pipeline.</span>
 <a id="__codelineno-0-417" name="__codelineno-0-417"></a>
-<a id="__codelineno-0-418" name="__codelineno-0-418"></a><span class="sd">        max_time_mins : float, default=float(&quot;inf&quot;)</span>
+<a id="__codelineno-0-418" name="__codelineno-0-418"></a><span class="sd">        max_time_mins : float, default=float("inf")</span>
 <a id="__codelineno-0-419" name="__codelineno-0-419"></a><span class="sd">            Maximum time to run the optimization. If none or inf, will run until the end of the generations.</span>
 <a id="__codelineno-0-420" name="__codelineno-0-420"></a>
 <a id="__codelineno-0-421" name="__codelineno-0-421"></a><span class="sd">        max_eval_time_mins : float, default=60*5</span>
@@ -3311,15 +3311,15 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-425" name="__codelineno-0-425"></a><span class="sd">        n_jobs : int, default=1</span>
 <a id="__codelineno-0-426" name="__codelineno-0-426"></a><span class="sd">            Number of processes to run in parallel.</span>
 <a id="__codelineno-0-427" name="__codelineno-0-427"></a>
-<a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">        validation_strategy : str, default=&#39;none&#39;</span>
+<a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">        validation_strategy : str, default='none'</span>
 <a id="__codelineno-0-429" name="__codelineno-0-429"></a><span class="sd">            EXPERIMENTAL The validation strategy to use for selecting the final pipeline from the population. TPOT may overfit the cross validation score. A second validation set can be used to select the final pipeline.</span>
-<a id="__codelineno-0-430" name="__codelineno-0-430"></a><span class="sd">            - &#39;auto&#39; : Automatically determine the validation strategy based on the dataset shape.</span>
-<a id="__codelineno-0-431" name="__codelineno-0-431"></a><span class="sd">            - &#39;reshuffled&#39; : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
-<a id="__codelineno-0-432" name="__codelineno-0-432"></a><span class="sd">            - &#39;split&#39; : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
-<a id="__codelineno-0-433" name="__codelineno-0-433"></a><span class="sd">            - &#39;none&#39; : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
+<a id="__codelineno-0-430" name="__codelineno-0-430"></a><span class="sd">            - 'auto' : Automatically determine the validation strategy based on the dataset shape.</span>
+<a id="__codelineno-0-431" name="__codelineno-0-431"></a><span class="sd">            - 'reshuffled' : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
+<a id="__codelineno-0-432" name="__codelineno-0-432"></a><span class="sd">            - 'split' : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
+<a id="__codelineno-0-433" name="__codelineno-0-433"></a><span class="sd">            - 'none' : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
 <a id="__codelineno-0-434" name="__codelineno-0-434"></a>
 <a id="__codelineno-0-435" name="__codelineno-0-435"></a><span class="sd">        validation_fraction : float, default=0.2</span>
-<a id="__codelineno-0-436" name="__codelineno-0-436"></a><span class="sd">          EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is &#39;split&#39;. Must be between 0 and 1.</span>
+<a id="__codelineno-0-436" name="__codelineno-0-436"></a><span class="sd">          EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is 'split'. Must be between 0 and 1.</span>
 <a id="__codelineno-0-437" name="__codelineno-0-437"></a>
 <a id="__codelineno-0-438" name="__codelineno-0-438"></a><span class="sd">        early_stop : int, default=None</span>
 <a id="__codelineno-0-439" name="__codelineno-0-439"></a><span class="sd">            Number of generations without improvement before early stopping. All objectives must have converged within the tolerance for this to be triggered. In general a value of around 5-20 is good.</span>
@@ -3353,9 +3353,9 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-467" name="__codelineno-0-467"></a><span class="sd">            A seed for reproducability of experiments. This value will be passed to numpy.random.default_rng() to create an instnce of the genrator to pass to other classes</span>
 <a id="__codelineno-0-468" name="__codelineno-0-468"></a>
 <a id="__codelineno-0-469" name="__codelineno-0-469"></a><span class="sd">            - int</span>
-<a id="__codelineno-0-470" name="__codelineno-0-470"></a><span class="sd">                Will be used to create and lock in Generator instance with &#39;numpy.random.default_rng()&#39;</span>
+<a id="__codelineno-0-470" name="__codelineno-0-470"></a><span class="sd">                Will be used to create and lock in Generator instance with 'numpy.random.default_rng()'</span>
 <a id="__codelineno-0-471" name="__codelineno-0-471"></a><span class="sd">            - None</span>
-<a id="__codelineno-0-472" name="__codelineno-0-472"></a><span class="sd">                Will be used to create Generator for &#39;numpy.random.default_rng()&#39; where a fresh, unpredictable entropy will be pulled from the OS</span>
+<a id="__codelineno-0-472" name="__codelineno-0-472"></a><span class="sd">                Will be used to create Generator for 'numpy.random.default_rng()' where a fresh, unpredictable entropy will be pulled from the OS</span>
 <a id="__codelineno-0-473" name="__codelineno-0-473"></a>
 <a id="__codelineno-0-474" name="__codelineno-0-474"></a><span class="sd">        allow_inner_classifiers : bool, default=True</span>
 <a id="__codelineno-0-475" name="__codelineno-0-475"></a><span class="sd">            If True, the search space will include ensembled classifiers. </span>
@@ -3382,7 +3382,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-496" name="__codelineno-0-496"></a><span class="sd">            - Validation_Pareto_Front : The full pareto front calculated on the validation set. This is calculated for all pipelines with Pareto_Front equal to 0. Unlike the Pareto_Front which only calculates the frontier and the final population, the Validation Pareto Front is calculated for all pipelines tested on the validation set.</span>
 <a id="__codelineno-0-497" name="__codelineno-0-497"></a>
 <a id="__codelineno-0-498" name="__codelineno-0-498"></a><span class="sd">        pareto_front : The same pandas dataframe as evaluated individuals, but containing only the frontier pareto front pipelines.</span>
-<a id="__codelineno-0-499" name="__codelineno-0-499"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-499" name="__codelineno-0-499"></a><span class="sd">        """</span>
 <a id="__codelineno-0-500" name="__codelineno-0-500"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_space</span> <span class="o">=</span> <span class="n">search_space</span>
 <a id="__codelineno-0-501" name="__codelineno-0-501"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">scorers</span> <span class="o">=</span> <span class="n">scorers</span>
 <a id="__codelineno-0-502" name="__codelineno-0-502"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">scorers_weights</span> <span class="o">=</span> <span class="n">scorers_weights</span>
@@ -3415,10 +3415,10 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-529" name="__codelineno-0-529"></a>
 <a id="__codelineno-0-530" name="__codelineno-0-530"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialized</span><span class="p">:</span>
 <a id="__codelineno-0-531" name="__codelineno-0-531"></a>
-<a id="__codelineno-0-532" name="__codelineno-0-532"></a>            <span class="n">get_search_space_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;n_classes&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> 
-<a id="__codelineno-0-533" name="__codelineno-0-533"></a>                                       <span class="s2">&quot;n_samples&quot;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> 
-<a id="__codelineno-0-534" name="__codelineno-0-534"></a>                                       <span class="s2">&quot;n_features&quot;</span><span class="p">:</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
-<a id="__codelineno-0-535" name="__codelineno-0-535"></a>                                       <span class="s2">&quot;random_state&quot;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">}</span>
+<a id="__codelineno-0-532" name="__codelineno-0-532"></a>            <span class="n">get_search_space_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"n_classes"</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> 
+<a id="__codelineno-0-533" name="__codelineno-0-533"></a>                                       <span class="s2">"n_samples"</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> 
+<a id="__codelineno-0-534" name="__codelineno-0-534"></a>                                       <span class="s2">"n_features"</span><span class="p">:</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+<a id="__codelineno-0-535" name="__codelineno-0-535"></a>                                       <span class="s2">"random_state"</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">}</span>
 <a id="__codelineno-0-536" name="__codelineno-0-536"></a>
 <a id="__codelineno-0-537" name="__codelineno-0-537"></a>            <span class="n">search_space</span> <span class="o">=</span> <span class="n">get_template_search_spaces</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search_space</span><span class="p">,</span> <span class="n">classification</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inner_predictors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">allow_inner_classifiers</span><span class="p">,</span> <span class="o">**</span><span class="n">get_search_space_params</span><span class="p">)</span>
 <a id="__codelineno-0-538" name="__codelineno-0-538"></a>
@@ -3477,7 +3477,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 
 
 <h3 id="tpot.tpot_estimator.templates.tpottemplates.TPOTClassifier.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">search_space</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;roc_auc_ovr&#39;</span><span class="p">],</span> <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="n">other_objective_functions_weights</span><span class="o">=</span><span class="p">[],</span> <span class="n">objective_function_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigger_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categorical_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_strategy</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">validation_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">early_stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">periodic_checkpoint_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_inner_classifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">search_space</span><span class="o">=</span><span class="s1">'linear'</span><span class="p">,</span> <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">'roc_auc_ovr'</span><span class="p">],</span> <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="n">other_objective_functions_weights</span><span class="o">=</span><span class="p">[],</span> <span class="n">objective_function_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigger_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categorical_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_strategy</span><span class="o">=</span><span class="s1">'none'</span><span class="p">,</span> <span class="n">validation_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">early_stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">periodic_checkpoint_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_inner_classifiers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">)</span></code>
 
 <a href="#tpot.tpot_estimator.templates.tpottemplates.TPOTClassifier.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -4203,8 +4203,8 @@ If provided, training will resume from this checkpoint.</p>
 <span class="normal"><a href="#__codelineno-0-524">524</a></span>
 <span class="normal"><a href="#__codelineno-0-525">525</a></span>
 <span class="normal"><a href="#__codelineno-0-526">526</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-309" name="__codelineno-0-309"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>       <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-310" name="__codelineno-0-310"></a>                    <span class="n">search_space</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-311" name="__codelineno-0-311"></a>                    <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;roc_auc_ovr&#39;</span><span class="p">],</span> 
+<a id="__codelineno-0-310" name="__codelineno-0-310"></a>                    <span class="n">search_space</span> <span class="o">=</span> <span class="s2">"linear"</span><span class="p">,</span>
+<a id="__codelineno-0-311" name="__codelineno-0-311"></a>                    <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">'roc_auc_ovr'</span><span class="p">],</span> 
 <a id="__codelineno-0-312" name="__codelineno-0-312"></a>                    <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <a id="__codelineno-0-313" name="__codelineno-0-313"></a>                    <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
 <a id="__codelineno-0-314" name="__codelineno-0-314"></a>                    <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="c1">#tpot.objectives.estimator_objective_functions.number_of_nodes_objective],</span>
@@ -4217,7 +4217,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-321" name="__codelineno-0-321"></a>                    <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> 
 <a id="__codelineno-0-322" name="__codelineno-0-322"></a>                    <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
 <a id="__codelineno-0-323" name="__codelineno-0-323"></a>                    <span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-324" name="__codelineno-0-324"></a>                    <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-324" name="__codelineno-0-324"></a>                    <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">,</span>
 <a id="__codelineno-0-325" name="__codelineno-0-325"></a>                    <span class="n">validation_fraction</span> <span class="o">=</span> <span class="mf">.2</span><span class="p">,</span> 
 <a id="__codelineno-0-326" name="__codelineno-0-326"></a>                    <span class="n">early_stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-327" name="__codelineno-0-327"></a>                    <span class="n">warm_start</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -4230,7 +4230,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-334" name="__codelineno-0-334"></a>                    <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-335" name="__codelineno-0-335"></a>
 <a id="__codelineno-0-336" name="__codelineno-0-336"></a>    <span class="p">):</span>
-<a id="__codelineno-0-337" name="__codelineno-0-337"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-337" name="__codelineno-0-337"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-338" name="__codelineno-0-338"></a><span class="sd">    An sklearn baseestimator that uses genetic programming to optimize a classification pipeline.</span>
 <a id="__codelineno-0-339" name="__codelineno-0-339"></a><span class="sd">    For more parameters, see the TPOTEstimator class.</span>
 <a id="__codelineno-0-340" name="__codelineno-0-340"></a>
@@ -4241,7 +4241,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-345" name="__codelineno-0-345"></a><span class="sd">        - String : The default search space to use for the optimization.</span>
 <a id="__codelineno-0-346" name="__codelineno-0-346"></a><span class="sd">        | String     | Description      |</span>
 <a id="__codelineno-0-347" name="__codelineno-0-347"></a><span class="sd">        | :---        |    :----:   |</span>
-<a id="__codelineno-0-348" name="__codelineno-0-348"></a><span class="sd">        | linear  | A linear pipeline with the structure of &quot;Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor.&quot; For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
+<a id="__codelineno-0-348" name="__codelineno-0-348"></a><span class="sd">        | linear  | A linear pipeline with the structure of "Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor." For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
 <a id="__codelineno-0-349" name="__codelineno-0-349"></a><span class="sd">        | linear-light | Same search space as linear, but without the inner classifier/regressor layer and with a reduced set of faster running estimators. |</span>
 <a id="__codelineno-0-350" name="__codelineno-0-350"></a><span class="sd">        | graph | TPOT will optimize a pipeline in the shape of a directed acyclic graph. The nodes of the graph can include selectors, scalers, transformers, or classifiers/regressors (inner classifiers/regressors can optionally be not included). This will return a custom GraphPipeline rather than an sklearn Pipeline. More details in Tutorial 6. |</span>
 <a id="__codelineno-0-351" name="__codelineno-0-351"></a><span class="sd">        | graph-light | Same as graph search space, but without the inner classifier/regressors and with a reduced set of faster running estimators. |</span>
@@ -4293,7 +4293,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-397" name="__codelineno-0-397"></a><span class="sd">        If supplied, pipeline will cache each transformer after calling fit with joblib.Memory. This feature</span>
 <a id="__codelineno-0-398" name="__codelineno-0-398"></a><span class="sd">        is used to avoid computing the fit transformers within a pipeline if the parameters</span>
 <a id="__codelineno-0-399" name="__codelineno-0-399"></a><span class="sd">        and input data are identical with another fitted pipeline during optimization process.</span>
-<a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="sd">        - String &#39;auto&#39;:</span>
+<a id="__codelineno-0-400" name="__codelineno-0-400"></a><span class="sd">        - String 'auto':</span>
 <a id="__codelineno-0-401" name="__codelineno-0-401"></a><span class="sd">            TPOT uses memory caching with a temporary directory and cleans it up upon shutdown.</span>
 <a id="__codelineno-0-402" name="__codelineno-0-402"></a><span class="sd">        - String path of a caching directory</span>
 <a id="__codelineno-0-403" name="__codelineno-0-403"></a><span class="sd">            TPOT uses memory caching with the provided directory and TPOT does NOT clean</span>
@@ -4311,7 +4311,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-415" name="__codelineno-0-415"></a><span class="sd">        - bool : If True, will use a default preprocessing pipeline which includes imputation followed by one hot encoding.</span>
 <a id="__codelineno-0-416" name="__codelineno-0-416"></a><span class="sd">        - Pipeline : If an instance of a pipeline is given, will use that pipeline as the preprocessing pipeline.</span>
 <a id="__codelineno-0-417" name="__codelineno-0-417"></a>
-<a id="__codelineno-0-418" name="__codelineno-0-418"></a><span class="sd">    max_time_mins : float, default=float(&quot;inf&quot;)</span>
+<a id="__codelineno-0-418" name="__codelineno-0-418"></a><span class="sd">    max_time_mins : float, default=float("inf")</span>
 <a id="__codelineno-0-419" name="__codelineno-0-419"></a><span class="sd">        Maximum time to run the optimization. If none or inf, will run until the end of the generations.</span>
 <a id="__codelineno-0-420" name="__codelineno-0-420"></a>
 <a id="__codelineno-0-421" name="__codelineno-0-421"></a><span class="sd">    max_eval_time_mins : float, default=60*5</span>
@@ -4321,15 +4321,15 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-425" name="__codelineno-0-425"></a><span class="sd">    n_jobs : int, default=1</span>
 <a id="__codelineno-0-426" name="__codelineno-0-426"></a><span class="sd">        Number of processes to run in parallel.</span>
 <a id="__codelineno-0-427" name="__codelineno-0-427"></a>
-<a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">    validation_strategy : str, default=&#39;none&#39;</span>
+<a id="__codelineno-0-428" name="__codelineno-0-428"></a><span class="sd">    validation_strategy : str, default='none'</span>
 <a id="__codelineno-0-429" name="__codelineno-0-429"></a><span class="sd">        EXPERIMENTAL The validation strategy to use for selecting the final pipeline from the population. TPOT may overfit the cross validation score. A second validation set can be used to select the final pipeline.</span>
-<a id="__codelineno-0-430" name="__codelineno-0-430"></a><span class="sd">        - &#39;auto&#39; : Automatically determine the validation strategy based on the dataset shape.</span>
-<a id="__codelineno-0-431" name="__codelineno-0-431"></a><span class="sd">        - &#39;reshuffled&#39; : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
-<a id="__codelineno-0-432" name="__codelineno-0-432"></a><span class="sd">        - &#39;split&#39; : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
-<a id="__codelineno-0-433" name="__codelineno-0-433"></a><span class="sd">        - &#39;none&#39; : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
+<a id="__codelineno-0-430" name="__codelineno-0-430"></a><span class="sd">        - 'auto' : Automatically determine the validation strategy based on the dataset shape.</span>
+<a id="__codelineno-0-431" name="__codelineno-0-431"></a><span class="sd">        - 'reshuffled' : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
+<a id="__codelineno-0-432" name="__codelineno-0-432"></a><span class="sd">        - 'split' : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
+<a id="__codelineno-0-433" name="__codelineno-0-433"></a><span class="sd">        - 'none' : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
 <a id="__codelineno-0-434" name="__codelineno-0-434"></a>
 <a id="__codelineno-0-435" name="__codelineno-0-435"></a><span class="sd">    validation_fraction : float, default=0.2</span>
-<a id="__codelineno-0-436" name="__codelineno-0-436"></a><span class="sd">      EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is &#39;split&#39;. Must be between 0 and 1.</span>
+<a id="__codelineno-0-436" name="__codelineno-0-436"></a><span class="sd">      EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is 'split'. Must be between 0 and 1.</span>
 <a id="__codelineno-0-437" name="__codelineno-0-437"></a>
 <a id="__codelineno-0-438" name="__codelineno-0-438"></a><span class="sd">    early_stop : int, default=None</span>
 <a id="__codelineno-0-439" name="__codelineno-0-439"></a><span class="sd">        Number of generations without improvement before early stopping. All objectives must have converged within the tolerance for this to be triggered. In general a value of around 5-20 is good.</span>
@@ -4363,9 +4363,9 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-467" name="__codelineno-0-467"></a><span class="sd">        A seed for reproducability of experiments. This value will be passed to numpy.random.default_rng() to create an instnce of the genrator to pass to other classes</span>
 <a id="__codelineno-0-468" name="__codelineno-0-468"></a>
 <a id="__codelineno-0-469" name="__codelineno-0-469"></a><span class="sd">        - int</span>
-<a id="__codelineno-0-470" name="__codelineno-0-470"></a><span class="sd">            Will be used to create and lock in Generator instance with &#39;numpy.random.default_rng()&#39;</span>
+<a id="__codelineno-0-470" name="__codelineno-0-470"></a><span class="sd">            Will be used to create and lock in Generator instance with 'numpy.random.default_rng()'</span>
 <a id="__codelineno-0-471" name="__codelineno-0-471"></a><span class="sd">        - None</span>
-<a id="__codelineno-0-472" name="__codelineno-0-472"></a><span class="sd">            Will be used to create Generator for &#39;numpy.random.default_rng()&#39; where a fresh, unpredictable entropy will be pulled from the OS</span>
+<a id="__codelineno-0-472" name="__codelineno-0-472"></a><span class="sd">            Will be used to create Generator for 'numpy.random.default_rng()' where a fresh, unpredictable entropy will be pulled from the OS</span>
 <a id="__codelineno-0-473" name="__codelineno-0-473"></a>
 <a id="__codelineno-0-474" name="__codelineno-0-474"></a><span class="sd">    allow_inner_classifiers : bool, default=True</span>
 <a id="__codelineno-0-475" name="__codelineno-0-475"></a><span class="sd">        If True, the search space will include ensembled classifiers. </span>
@@ -4392,7 +4392,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-496" name="__codelineno-0-496"></a><span class="sd">        - Validation_Pareto_Front : The full pareto front calculated on the validation set. This is calculated for all pipelines with Pareto_Front equal to 0. Unlike the Pareto_Front which only calculates the frontier and the final population, the Validation Pareto Front is calculated for all pipelines tested on the validation set.</span>
 <a id="__codelineno-0-497" name="__codelineno-0-497"></a>
 <a id="__codelineno-0-498" name="__codelineno-0-498"></a><span class="sd">    pareto_front : The same pandas dataframe as evaluated individuals, but containing only the frontier pareto front pipelines.</span>
-<a id="__codelineno-0-499" name="__codelineno-0-499"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-499" name="__codelineno-0-499"></a><span class="sd">    """</span>
 <a id="__codelineno-0-500" name="__codelineno-0-500"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">search_space</span> <span class="o">=</span> <span class="n">search_space</span>
 <a id="__codelineno-0-501" name="__codelineno-0-501"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">scorers</span> <span class="o">=</span> <span class="n">scorers</span>
 <a id="__codelineno-0-502" name="__codelineno-0-502"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">scorers_weights</span> <span class="o">=</span> <span class="n">scorers_weights</span>
@@ -4713,8 +4713,8 @@ If provided, training will resume from this checkpoint.</p>
 <span class="normal"><a href="#__codelineno-0-304">304</a></span>
 <span class="normal"><a href="#__codelineno-0-305">305</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="k">class</span><span class="w"> </span><span class="nc">TPOTRegressor</span><span class="p">(</span><span class="n">TPOTEstimator</span><span class="p">):</span>
 <a id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>       <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                        <span class="n">search_space</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                        <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">],</span> 
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                        <span class="n">search_space</span> <span class="o">=</span> <span class="s2">"linear"</span><span class="p">,</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                        <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">'neg_mean_squared_error'</span><span class="p">],</span> 
 <a id="__codelineno-0-50" name="__codelineno-0-50"></a>                        <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <a id="__codelineno-0-51" name="__codelineno-0-51"></a>                        <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">#remove this and use a value based on dataset size?</span>
 <a id="__codelineno-0-52" name="__codelineno-0-52"></a>                        <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="c1">#tpot.objectives.estimator_objective_functions.number_of_nodes_objective],</span>
@@ -4727,7 +4727,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a>                        <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> 
 <a id="__codelineno-0-60" name="__codelineno-0-60"></a>                        <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
 <a id="__codelineno-0-61" name="__codelineno-0-61"></a>                        <span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                        <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                        <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">,</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a>                        <span class="n">validation_fraction</span> <span class="o">=</span> <span class="mf">.2</span><span class="p">,</span> 
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>                        <span class="n">early_stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-65" name="__codelineno-0-65"></a>                        <span class="n">warm_start</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -4739,7 +4739,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-71" name="__codelineno-0-71"></a>                        <span class="n">allow_inner_regressors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-72" name="__codelineno-0-72"></a>                        <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-73" name="__codelineno-0-73"></a>        <span class="p">):</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">        </span><span class="sd">'''</span>
 <a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">        An sklearn baseestimator that uses genetic programming to optimize a regression pipeline.</span>
 <a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">        For more parameters, see the TPOTEstimator class.</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a>
@@ -4750,7 +4750,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="sd">                        - String : The default search space to use for the optimization.</span>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">            | String     | Description      |</span>
 <a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">            | :---        |    :----:   |</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">            | linear  | A linear pipeline with the structure of &quot;Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor.&quot; For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">            | linear  | A linear pipeline with the structure of "Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor." For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">            | linear-light | Same search space as linear, but without the inner classifier/regressor layer and with a reduced set of faster running estimators. |</span>
 <a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">            | graph | TPOT will optimize a pipeline in the shape of a directed acyclic graph. The nodes of the graph can include selectors, scalers, transformers, or classifiers/regressors (inner classifiers/regressors can optionally be not included). This will return a custom GraphPipeline rather than an sklearn Pipeline. More details in Tutorial 6. |</span>
 <a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">            | graph-light | Same as graph search space, but without the inner classifier/regressors and with a reduced set of faster running estimators. |</span>
@@ -4802,7 +4802,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-134" name="__codelineno-0-134"></a><span class="sd">            If supplied, pipeline will cache each transformer after calling fit with joblib.Memory. This feature</span>
 <a id="__codelineno-0-135" name="__codelineno-0-135"></a><span class="sd">            is used to avoid computing the fit transformers within a pipeline if the parameters</span>
 <a id="__codelineno-0-136" name="__codelineno-0-136"></a><span class="sd">            and input data are identical with another fitted pipeline during optimization process.</span>
-<a id="__codelineno-0-137" name="__codelineno-0-137"></a><span class="sd">            - String &#39;auto&#39;:</span>
+<a id="__codelineno-0-137" name="__codelineno-0-137"></a><span class="sd">            - String 'auto':</span>
 <a id="__codelineno-0-138" name="__codelineno-0-138"></a><span class="sd">                TPOT uses memory caching with a temporary directory and cleans it up upon shutdown.</span>
 <a id="__codelineno-0-139" name="__codelineno-0-139"></a><span class="sd">            - String path of a caching directory</span>
 <a id="__codelineno-0-140" name="__codelineno-0-140"></a><span class="sd">                TPOT uses memory caching with the provided directory and TPOT does NOT clean</span>
@@ -4820,7 +4820,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-152" name="__codelineno-0-152"></a><span class="sd">            - bool : If True, will use a default preprocessing pipeline which includes imputation followed by one hot encoding.</span>
 <a id="__codelineno-0-153" name="__codelineno-0-153"></a><span class="sd">            - Pipeline : If an instance of a pipeline is given, will use that pipeline as the preprocessing pipeline.</span>
 <a id="__codelineno-0-154" name="__codelineno-0-154"></a>
-<a id="__codelineno-0-155" name="__codelineno-0-155"></a><span class="sd">        max_time_mins : float, default=float(&quot;inf&quot;)</span>
+<a id="__codelineno-0-155" name="__codelineno-0-155"></a><span class="sd">        max_time_mins : float, default=float("inf")</span>
 <a id="__codelineno-0-156" name="__codelineno-0-156"></a><span class="sd">            Maximum time to run the optimization. If none or inf, will run until the end of the generations.</span>
 <a id="__codelineno-0-157" name="__codelineno-0-157"></a>
 <a id="__codelineno-0-158" name="__codelineno-0-158"></a><span class="sd">        max_eval_time_mins : float, default=60*5</span>
@@ -4830,15 +4830,15 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-162" name="__codelineno-0-162"></a><span class="sd">        n_jobs : int, default=1</span>
 <a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="sd">            Number of processes to run in parallel.</span>
 <a id="__codelineno-0-164" name="__codelineno-0-164"></a>
-<a id="__codelineno-0-165" name="__codelineno-0-165"></a><span class="sd">        validation_strategy : str, default=&#39;none&#39;</span>
+<a id="__codelineno-0-165" name="__codelineno-0-165"></a><span class="sd">        validation_strategy : str, default='none'</span>
 <a id="__codelineno-0-166" name="__codelineno-0-166"></a><span class="sd">            EXPERIMENTAL The validation strategy to use for selecting the final pipeline from the population. TPOT may overfit the cross validation score. A second validation set can be used to select the final pipeline.</span>
-<a id="__codelineno-0-167" name="__codelineno-0-167"></a><span class="sd">            - &#39;auto&#39; : Automatically determine the validation strategy based on the dataset shape.</span>
-<a id="__codelineno-0-168" name="__codelineno-0-168"></a><span class="sd">            - &#39;reshuffled&#39; : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
-<a id="__codelineno-0-169" name="__codelineno-0-169"></a><span class="sd">            - &#39;split&#39; : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
-<a id="__codelineno-0-170" name="__codelineno-0-170"></a><span class="sd">            - &#39;none&#39; : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
+<a id="__codelineno-0-167" name="__codelineno-0-167"></a><span class="sd">            - 'auto' : Automatically determine the validation strategy based on the dataset shape.</span>
+<a id="__codelineno-0-168" name="__codelineno-0-168"></a><span class="sd">            - 'reshuffled' : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
+<a id="__codelineno-0-169" name="__codelineno-0-169"></a><span class="sd">            - 'split' : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
+<a id="__codelineno-0-170" name="__codelineno-0-170"></a><span class="sd">            - 'none' : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
 <a id="__codelineno-0-171" name="__codelineno-0-171"></a>
 <a id="__codelineno-0-172" name="__codelineno-0-172"></a><span class="sd">        validation_fraction : float, default=0.2</span>
-<a id="__codelineno-0-173" name="__codelineno-0-173"></a><span class="sd">          EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is &#39;split&#39;. Must be between 0 and 1.</span>
+<a id="__codelineno-0-173" name="__codelineno-0-173"></a><span class="sd">          EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is 'split'. Must be between 0 and 1.</span>
 <a id="__codelineno-0-174" name="__codelineno-0-174"></a>
 <a id="__codelineno-0-175" name="__codelineno-0-175"></a><span class="sd">        early_stop : int, default=None</span>
 <a id="__codelineno-0-176" name="__codelineno-0-176"></a><span class="sd">            Number of generations without improvement before early stopping. All objectives must have converged within the tolerance for this to be triggered. In general a value of around 5-20 is good.</span>
@@ -4872,9 +4872,9 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="sd">            A seed for reproducability of experiments. This value will be passed to numpy.random.default_rng() to create an instnce of the genrator to pass to other classes</span>
 <a id="__codelineno-0-205" name="__codelineno-0-205"></a>
 <a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">            - int</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">                Will be used to create and lock in Generator instance with &#39;numpy.random.default_rng()&#39;</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">                Will be used to create and lock in Generator instance with 'numpy.random.default_rng()'</span>
 <a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">            - None</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">                Will be used to create Generator for &#39;numpy.random.default_rng()&#39; where a fresh, unpredictable entropy will be pulled from the OS</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">                Will be used to create Generator for 'numpy.random.default_rng()' where a fresh, unpredictable entropy will be pulled from the OS</span>
 <a id="__codelineno-0-210" name="__codelineno-0-210"></a>
 <a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">        allow_inner_regressors : bool, default=True</span>
 <a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">            If True, the search space will include ensembled regressors.</span>
@@ -4901,7 +4901,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-233" name="__codelineno-0-233"></a><span class="sd">            - Validation_Pareto_Front : The full pareto front calculated on the validation set. This is calculated for all pipelines with Pareto_Front equal to 0. Unlike the Pareto_Front which only calculates the frontier and the final population, the Validation Pareto Front is calculated for all pipelines tested on the validation set.</span>
 <a id="__codelineno-0-234" name="__codelineno-0-234"></a>
 <a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">        pareto_front : The same pandas dataframe as evaluated individuals, but containing only the frontier pareto front pipelines.</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">        &#39;&#39;&#39;</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">        '''</span>
 <a id="__codelineno-0-237" name="__codelineno-0-237"></a>
 <a id="__codelineno-0-238" name="__codelineno-0-238"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">search_space</span> <span class="o">=</span> <span class="n">search_space</span>
 <a id="__codelineno-0-239" name="__codelineno-0-239"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">scorers</span> <span class="o">=</span> <span class="n">scorers</span>
@@ -4935,10 +4935,10 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-267" name="__codelineno-0-267"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <a id="__codelineno-0-268" name="__codelineno-0-268"></a>
 <a id="__codelineno-0-269" name="__codelineno-0-269"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialized</span><span class="p">:</span>
-<a id="__codelineno-0-270" name="__codelineno-0-270"></a>            <span class="n">get_search_space_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;n_classes&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> 
-<a id="__codelineno-0-271" name="__codelineno-0-271"></a>                                        <span class="s2">&quot;n_samples&quot;</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> 
-<a id="__codelineno-0-272" name="__codelineno-0-272"></a>                                        <span class="s2">&quot;n_features&quot;</span><span class="p">:</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
-<a id="__codelineno-0-273" name="__codelineno-0-273"></a>                                        <span class="s2">&quot;random_state&quot;</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">}</span>
+<a id="__codelineno-0-270" name="__codelineno-0-270"></a>            <span class="n">get_search_space_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"n_classes"</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> 
+<a id="__codelineno-0-271" name="__codelineno-0-271"></a>                                        <span class="s2">"n_samples"</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> 
+<a id="__codelineno-0-272" name="__codelineno-0-272"></a>                                        <span class="s2">"n_features"</span><span class="p">:</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+<a id="__codelineno-0-273" name="__codelineno-0-273"></a>                                        <span class="s2">"random_state"</span><span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">}</span>
 <a id="__codelineno-0-274" name="__codelineno-0-274"></a>
 <a id="__codelineno-0-275" name="__codelineno-0-275"></a>            <span class="n">search_space</span> <span class="o">=</span> <span class="n">get_template_search_spaces</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">search_space</span><span class="p">,</span> <span class="n">classification</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inner_predictors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">allow_inner_regressors</span><span class="p">,</span> <span class="o">**</span><span class="n">get_search_space_params</span><span class="p">)</span>
 <a id="__codelineno-0-276" name="__codelineno-0-276"></a>
@@ -4990,7 +4990,7 @@ If provided, training will resume from this checkpoint.</p>
 
 
 <h3 id="tpot.tpot_estimator.templates.tpottemplates.TPOTRegressor.__init__" class="doc doc-heading">
-            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">search_space</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">],</span> <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="n">other_objective_functions_weights</span><span class="o">=</span><span class="p">[],</span> <span class="n">objective_function_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigger_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categorical_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_strategy</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">validation_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">early_stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">periodic_checkpoint_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_inner_regressors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">search_space</span><span class="o">=</span><span class="s1">'linear'</span><span class="p">,</span> <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">'neg_mean_squared_error'</span><span class="p">],</span> <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="n">other_objective_functions_weights</span><span class="o">=</span><span class="p">[],</span> <span class="n">objective_function_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bigger_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">categorical_features</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">preprocessing</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_strategy</span><span class="o">=</span><span class="s1">'none'</span><span class="p">,</span> <span class="n">validation_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">early_stop</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">warm_start</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">periodic_checkpoint_folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">memory_limit</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_inner_regressors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">)</span></code>
 
 <a href="#tpot.tpot_estimator.templates.tpottemplates.TPOTRegressor.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
@@ -5738,8 +5738,8 @@ If provided, training will resume from this checkpoint.</p>
 <span class="normal"><a href="#__codelineno-0-262">262</a></span>
 <span class="normal"><a href="#__codelineno-0-263">263</a></span>
 <span class="normal"><a href="#__codelineno-0-264">264</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>       <span class="bp">self</span><span class="p">,</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                    <span class="n">search_space</span> <span class="o">=</span> <span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                    <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">],</span> 
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a>                    <span class="n">search_space</span> <span class="o">=</span> <span class="s2">"linear"</span><span class="p">,</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49"></a>                    <span class="n">scorers</span><span class="o">=</span><span class="p">[</span><span class="s1">'neg_mean_squared_error'</span><span class="p">],</span> 
 <a id="__codelineno-0-50" name="__codelineno-0-50"></a>                    <span class="n">scorers_weights</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
 <a id="__codelineno-0-51" name="__codelineno-0-51"></a>                    <span class="n">cv</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">#remove this and use a value based on dataset size?</span>
 <a id="__codelineno-0-52" name="__codelineno-0-52"></a>                    <span class="n">other_objective_functions</span><span class="o">=</span><span class="p">[],</span> <span class="c1">#tpot.objectives.estimator_objective_functions.number_of_nodes_objective],</span>
@@ -5752,7 +5752,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a>                    <span class="n">max_time_mins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> 
 <a id="__codelineno-0-60" name="__codelineno-0-60"></a>                    <span class="n">max_eval_time_mins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> 
 <a id="__codelineno-0-61" name="__codelineno-0-61"></a>                    <span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                    <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a>                    <span class="n">validation_strategy</span> <span class="o">=</span> <span class="s2">"none"</span><span class="p">,</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a>                    <span class="n">validation_fraction</span> <span class="o">=</span> <span class="mf">.2</span><span class="p">,</span> 
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>                    <span class="n">early_stop</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-65" name="__codelineno-0-65"></a>                    <span class="n">warm_start</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -5764,7 +5764,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-71" name="__codelineno-0-71"></a>                    <span class="n">allow_inner_regressors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <a id="__codelineno-0-72" name="__codelineno-0-72"></a>                    <span class="o">**</span><span class="n">tpotestimator_kwargs</span><span class="p">,</span>
 <a id="__codelineno-0-73" name="__codelineno-0-73"></a>    <span class="p">):</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74"></a><span class="w">    </span><span class="sd">'''</span>
 <a id="__codelineno-0-75" name="__codelineno-0-75"></a><span class="sd">    An sklearn baseestimator that uses genetic programming to optimize a regression pipeline.</span>
 <a id="__codelineno-0-76" name="__codelineno-0-76"></a><span class="sd">    For more parameters, see the TPOTEstimator class.</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77"></a>
@@ -5775,7 +5775,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-82" name="__codelineno-0-82"></a><span class="sd">                    - String : The default search space to use for the optimization.</span>
 <a id="__codelineno-0-83" name="__codelineno-0-83"></a><span class="sd">        | String     | Description      |</span>
 <a id="__codelineno-0-84" name="__codelineno-0-84"></a><span class="sd">        | :---        |    :----:   |</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">        | linear  | A linear pipeline with the structure of &quot;Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor.&quot; For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85"></a><span class="sd">        | linear  | A linear pipeline with the structure of "Selector-&gt;(transformers+Passthrough)-&gt;(classifiers/regressors+Passthrough)-&gt;final classifier/regressor." For both the transformer and inner estimator layers, TPOT may choose one or more transformers/classifiers, or it may choose none. The inner classifier/regressor layer is optional. |</span>
 <a id="__codelineno-0-86" name="__codelineno-0-86"></a><span class="sd">        | linear-light | Same search space as linear, but without the inner classifier/regressor layer and with a reduced set of faster running estimators. |</span>
 <a id="__codelineno-0-87" name="__codelineno-0-87"></a><span class="sd">        | graph | TPOT will optimize a pipeline in the shape of a directed acyclic graph. The nodes of the graph can include selectors, scalers, transformers, or classifiers/regressors (inner classifiers/regressors can optionally be not included). This will return a custom GraphPipeline rather than an sklearn Pipeline. More details in Tutorial 6. |</span>
 <a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="sd">        | graph-light | Same as graph search space, but without the inner classifier/regressors and with a reduced set of faster running estimators. |</span>
@@ -5827,7 +5827,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-134" name="__codelineno-0-134"></a><span class="sd">        If supplied, pipeline will cache each transformer after calling fit with joblib.Memory. This feature</span>
 <a id="__codelineno-0-135" name="__codelineno-0-135"></a><span class="sd">        is used to avoid computing the fit transformers within a pipeline if the parameters</span>
 <a id="__codelineno-0-136" name="__codelineno-0-136"></a><span class="sd">        and input data are identical with another fitted pipeline during optimization process.</span>
-<a id="__codelineno-0-137" name="__codelineno-0-137"></a><span class="sd">        - String &#39;auto&#39;:</span>
+<a id="__codelineno-0-137" name="__codelineno-0-137"></a><span class="sd">        - String 'auto':</span>
 <a id="__codelineno-0-138" name="__codelineno-0-138"></a><span class="sd">            TPOT uses memory caching with a temporary directory and cleans it up upon shutdown.</span>
 <a id="__codelineno-0-139" name="__codelineno-0-139"></a><span class="sd">        - String path of a caching directory</span>
 <a id="__codelineno-0-140" name="__codelineno-0-140"></a><span class="sd">            TPOT uses memory caching with the provided directory and TPOT does NOT clean</span>
@@ -5845,7 +5845,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-152" name="__codelineno-0-152"></a><span class="sd">        - bool : If True, will use a default preprocessing pipeline which includes imputation followed by one hot encoding.</span>
 <a id="__codelineno-0-153" name="__codelineno-0-153"></a><span class="sd">        - Pipeline : If an instance of a pipeline is given, will use that pipeline as the preprocessing pipeline.</span>
 <a id="__codelineno-0-154" name="__codelineno-0-154"></a>
-<a id="__codelineno-0-155" name="__codelineno-0-155"></a><span class="sd">    max_time_mins : float, default=float(&quot;inf&quot;)</span>
+<a id="__codelineno-0-155" name="__codelineno-0-155"></a><span class="sd">    max_time_mins : float, default=float("inf")</span>
 <a id="__codelineno-0-156" name="__codelineno-0-156"></a><span class="sd">        Maximum time to run the optimization. If none or inf, will run until the end of the generations.</span>
 <a id="__codelineno-0-157" name="__codelineno-0-157"></a>
 <a id="__codelineno-0-158" name="__codelineno-0-158"></a><span class="sd">    max_eval_time_mins : float, default=60*5</span>
@@ -5855,15 +5855,15 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-162" name="__codelineno-0-162"></a><span class="sd">    n_jobs : int, default=1</span>
 <a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="sd">        Number of processes to run in parallel.</span>
 <a id="__codelineno-0-164" name="__codelineno-0-164"></a>
-<a id="__codelineno-0-165" name="__codelineno-0-165"></a><span class="sd">    validation_strategy : str, default=&#39;none&#39;</span>
+<a id="__codelineno-0-165" name="__codelineno-0-165"></a><span class="sd">    validation_strategy : str, default='none'</span>
 <a id="__codelineno-0-166" name="__codelineno-0-166"></a><span class="sd">        EXPERIMENTAL The validation strategy to use for selecting the final pipeline from the population. TPOT may overfit the cross validation score. A second validation set can be used to select the final pipeline.</span>
-<a id="__codelineno-0-167" name="__codelineno-0-167"></a><span class="sd">        - &#39;auto&#39; : Automatically determine the validation strategy based on the dataset shape.</span>
-<a id="__codelineno-0-168" name="__codelineno-0-168"></a><span class="sd">        - &#39;reshuffled&#39; : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
-<a id="__codelineno-0-169" name="__codelineno-0-169"></a><span class="sd">        - &#39;split&#39; : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
-<a id="__codelineno-0-170" name="__codelineno-0-170"></a><span class="sd">        - &#39;none&#39; : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
+<a id="__codelineno-0-167" name="__codelineno-0-167"></a><span class="sd">        - 'auto' : Automatically determine the validation strategy based on the dataset shape.</span>
+<a id="__codelineno-0-168" name="__codelineno-0-168"></a><span class="sd">        - 'reshuffled' : Use the same data for cross validation and final validation, but with different splits for the folds. This is the default for small datasets.</span>
+<a id="__codelineno-0-169" name="__codelineno-0-169"></a><span class="sd">        - 'split' : Use a separate validation set for final validation. Data will be split according to validation_fraction. This is the default for medium datasets.</span>
+<a id="__codelineno-0-170" name="__codelineno-0-170"></a><span class="sd">        - 'none' : Do not use a separate validation set for final validation. Select based on the original cross-validation score. This is the default for large datasets.</span>
 <a id="__codelineno-0-171" name="__codelineno-0-171"></a>
 <a id="__codelineno-0-172" name="__codelineno-0-172"></a><span class="sd">    validation_fraction : float, default=0.2</span>
-<a id="__codelineno-0-173" name="__codelineno-0-173"></a><span class="sd">      EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is &#39;split&#39;. Must be between 0 and 1.</span>
+<a id="__codelineno-0-173" name="__codelineno-0-173"></a><span class="sd">      EXPERIMENTAL The fraction of the dataset to use for the validation set when validation_strategy is 'split'. Must be between 0 and 1.</span>
 <a id="__codelineno-0-174" name="__codelineno-0-174"></a>
 <a id="__codelineno-0-175" name="__codelineno-0-175"></a><span class="sd">    early_stop : int, default=None</span>
 <a id="__codelineno-0-176" name="__codelineno-0-176"></a><span class="sd">        Number of generations without improvement before early stopping. All objectives must have converged within the tolerance for this to be triggered. In general a value of around 5-20 is good.</span>
@@ -5897,9 +5897,9 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-204" name="__codelineno-0-204"></a><span class="sd">        A seed for reproducability of experiments. This value will be passed to numpy.random.default_rng() to create an instnce of the genrator to pass to other classes</span>
 <a id="__codelineno-0-205" name="__codelineno-0-205"></a>
 <a id="__codelineno-0-206" name="__codelineno-0-206"></a><span class="sd">        - int</span>
-<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">            Will be used to create and lock in Generator instance with &#39;numpy.random.default_rng()&#39;</span>
+<a id="__codelineno-0-207" name="__codelineno-0-207"></a><span class="sd">            Will be used to create and lock in Generator instance with 'numpy.random.default_rng()'</span>
 <a id="__codelineno-0-208" name="__codelineno-0-208"></a><span class="sd">        - None</span>
-<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">            Will be used to create Generator for &#39;numpy.random.default_rng()&#39; where a fresh, unpredictable entropy will be pulled from the OS</span>
+<a id="__codelineno-0-209" name="__codelineno-0-209"></a><span class="sd">            Will be used to create Generator for 'numpy.random.default_rng()' where a fresh, unpredictable entropy will be pulled from the OS</span>
 <a id="__codelineno-0-210" name="__codelineno-0-210"></a>
 <a id="__codelineno-0-211" name="__codelineno-0-211"></a><span class="sd">    allow_inner_regressors : bool, default=True</span>
 <a id="__codelineno-0-212" name="__codelineno-0-212"></a><span class="sd">        If True, the search space will include ensembled regressors.</span>
@@ -5926,7 +5926,7 @@ If provided, training will resume from this checkpoint.</p>
 <a id="__codelineno-0-233" name="__codelineno-0-233"></a><span class="sd">        - Validation_Pareto_Front : The full pareto front calculated on the validation set. This is calculated for all pipelines with Pareto_Front equal to 0. Unlike the Pareto_Front which only calculates the frontier and the final population, the Validation Pareto Front is calculated for all pipelines tested on the validation set.</span>
 <a id="__codelineno-0-234" name="__codelineno-0-234"></a>
 <a id="__codelineno-0-235" name="__codelineno-0-235"></a><span class="sd">    pareto_front : The same pandas dataframe as evaluated individuals, but containing only the frontier pareto front pipelines.</span>
-<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">    &#39;&#39;&#39;</span>
+<a id="__codelineno-0-236" name="__codelineno-0-236"></a><span class="sd">    '''</span>
 <a id="__codelineno-0-237" name="__codelineno-0-237"></a>
 <a id="__codelineno-0-238" name="__codelineno-0-238"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">search_space</span> <span class="o">=</span> <span class="n">search_space</span>
 <a id="__codelineno-0-239" name="__codelineno-0-239"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">scorers</span> <span class="o">=</span> <span class="n">scorers</span>

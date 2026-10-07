@@ -2953,9 +2953,9 @@ Additionally, currently transformers add 1 point and selectors add 0 points (sin
 <span class="normal"><a href="#__codelineno-0-279">279</a></span>
 <span class="normal"><a href="#__codelineno-0-280">280</a></span>
 <span class="normal"><a href="#__codelineno-0-281">281</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-266" name="__codelineno-0-266"></a><span class="k">def</span><span class="w"> </span><span class="nf">complexity_scorer</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-267" name="__codelineno-0-267"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-267" name="__codelineno-0-267"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-268" name="__codelineno-0-268"></a><span class="sd">    Estimates the number of learned parameters across all classifiers and regressors in the pipelines. </span>
-<a id="__codelineno-0-269" name="__codelineno-0-269"></a><span class="sd">    Additionally, currently transformers add 1 point and selectors add 0 points (since they don&#39;t affect the complexity of the &quot;final&quot; predictive pipeline.</span>
+<a id="__codelineno-0-269" name="__codelineno-0-269"></a><span class="sd">    Additionally, currently transformers add 1 point and selectors add 0 points (since they don't affect the complexity of the "final" predictive pipeline.</span>
 <a id="__codelineno-0-270" name="__codelineno-0-270"></a>
 <a id="__codelineno-0-271" name="__codelineno-0-271"></a><span class="sd">    Parameters</span>
 <a id="__codelineno-0-272" name="__codelineno-0-272"></a><span class="sd">    ----------</span>
@@ -2966,7 +2966,7 @@ Additionally, currently transformers add 1 point and selectors add 0 points (sin
 <a id="__codelineno-0-277" name="__codelineno-0-277"></a><span class="sd">    y: array-like</span>
 <a id="__codelineno-0-278" name="__codelineno-0-278"></a><span class="sd">        The target values (unused)</span>
 <a id="__codelineno-0-279" name="__codelineno-0-279"></a>
-<a id="__codelineno-0-280" name="__codelineno-0-280"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-280" name="__codelineno-0-280"></a><span class="sd">    """</span>
 <a id="__codelineno-0-281" name="__codelineno-0-281"></a>    <span class="k">return</span> <span class="n">calculate_model_complexity</span><span class="p">(</span><span class="n">est</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>

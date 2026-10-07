@@ -3044,7 +3044,7 @@ individuals, <em>k</em> times. The returned list contains the indices of the cho
 <span class="normal"><a href="#__codelineno-0-74">74</a></span>
 <span class="normal"><a href="#__codelineno-0-75">75</a></span>
 <span class="normal"><a href="#__codelineno-0-76">76</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="k">def</span><span class="w"> </span><span class="nf">tournament_selection</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n_parents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tournament_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">score_index</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    Select the best individual among *tournsize* randomly chosen</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">    individuals, *k* times. The returned list contains the indices of the chosen *individuals*.</span>
 <a id="__codelineno-0-42" name="__codelineno-0-42"></a>
@@ -3061,18 +3061,18 @@ individuals, <em>k</em> times. The returned list contains the indices of the cho
 <a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    tournament_size : int, optional</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        The number of individuals participating in each tournament.</span>
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">    score_index : int, str, optional</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">        The index of the score to use for selection. If &quot;average&quot; is passed, the average score is used. The default is 0 (only the first score is used).</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">        The index of the score to use for selection. If "average" is passed, the average score is used. The default is 0 (only the first score is used).</span>
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a>
 <a id="__codelineno-0-58" name="__codelineno-0-58"></a><span class="sd">    Returns</span>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">    -------</span>
 <a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        A array of indices of selected individuals of shape (k, n_parents).</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61"></a><span class="sd">    """</span>
 <a id="__codelineno-0-62" name="__codelineno-0-62"></a>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>
 <a id="__codelineno-0-65" name="__codelineno-0-65"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">score_index</span><span class="p">,</span><span class="nb">int</span><span class="p">):</span>
 <a id="__codelineno-0-66" name="__codelineno-0-66"></a>        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">score_index</span><span class="p">]</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="k">elif</span> <span class="n">score_index</span> <span class="o">==</span> <span class="s2">&quot;average&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67"></a>    <span class="k">elif</span> <span class="n">score_index</span> <span class="o">==</span> <span class="s2">"average"</span><span class="p">:</span>
 <a id="__codelineno-0-68" name="__codelineno-0-68"></a>        <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <a id="__codelineno-0-69" name="__codelineno-0-69"></a>
 <a id="__codelineno-0-70" name="__codelineno-0-70"></a>    <span class="n">chosen</span> <span class="o">=</span> <span class="p">[]</span>

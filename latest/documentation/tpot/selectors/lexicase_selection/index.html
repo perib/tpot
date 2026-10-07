@@ -3010,7 +3010,7 @@ The returned list contains the indices of the chosen <em>individuals</em>.</p>
 <span class="normal"><a href="#__codelineno-0-68">68</a></span>
 <span class="normal"><a href="#__codelineno-0-69">69</a></span>
 <span class="normal"><a href="#__codelineno-0-70">70</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="k">def</span><span class="w"> </span><span class="nf">lexicase_selection</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n_parents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    Select the best individual according to Lexicase Selection, *k* times.</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">    The returned list contains the indices of the chosen *individuals*.</span>
 <a id="__codelineno-0-42" name="__codelineno-0-42"></a>
@@ -3027,7 +3027,7 @@ The returned list contains the indices of the chosen <em>individuals</em>.</p>
 <a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    Returns</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">    -------</span>
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a><span class="sd">        A array of indices of selected individuals of shape (k, n_parents).</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    """</span>
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-58" name="__codelineno-0-58"></a>    <span class="n">chosen</span> <span class="o">=</span><span class="p">[]</span>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">n_parents</span><span class="p">):</span>

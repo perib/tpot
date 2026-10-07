@@ -3041,7 +3041,7 @@ The returned list contains the indices of the chosen <em>individuals</em>.</p>
 <span class="normal"><a href="#__codelineno-0-101">101</a></span>
 <span class="normal"><a href="#__codelineno-0-102">102</a></span>
 <span class="normal"><a href="#__codelineno-0-103">103</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="k">def</span><span class="w"> </span><span class="nf">tournament_selection_dominated</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">n_parents</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">    Select the best individual among 2 randomly chosen</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    individuals, *k* times. Selection is first attempted by checking if one individual dominates the other. Otherwise one with the highest crowding distance is selected.</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    The returned list contains the indices of the chosen *individuals*.</span>
@@ -3061,7 +3061,7 @@ The returned list contains the indices of the chosen <em>individuals</em>.</p>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a><span class="sd">    -------</span>
 <a id="__codelineno-0-60" name="__codelineno-0-60"></a><span class="sd">        A array of indices of selected individuals of shape (k, n_parents).</span>
 <a id="__codelineno-0-61" name="__codelineno-0-61"></a>
-<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62"></a><span class="sd">    """</span>
 <a id="__codelineno-0-63" name="__codelineno-0-63"></a>
 <a id="__codelineno-0-64" name="__codelineno-0-64"></a>    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
 <a id="__codelineno-0-65" name="__codelineno-0-65"></a>    <span class="n">pareto_fronts</span> <span class="o">=</span> <span class="n">nondominated_sorting</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>

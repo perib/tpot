@@ -2965,7 +2965,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-116">116</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-88" name="__codelineno-0-88"></a><span class="k">def</span><span class="w"> </span><span class="nf">tpot_parser</span><span class="p">(</span>
 <a id="__codelineno-0-89" name="__codelineno-0-89"></a>    <span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span>
 <a id="__codelineno-0-90" name="__codelineno-0-90"></a>    <span class="p">):</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-92" name="__codelineno-0-92"></a><span class="sd">    Convert amltk pipeline search space into a tpot pipeline search space.</span>
 <a id="__codelineno-0-93" name="__codelineno-0-93"></a>
 <a id="__codelineno-0-94" name="__codelineno-0-94"></a><span class="sd">    Parameters</span>
@@ -2977,7 +2977,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-100" name="__codelineno-0-100"></a><span class="sd">    -------</span>
 <a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="sd">    tpot.search_spaces.base.SearchSpace</span>
 <a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="sd">        The equivalent TPOT search space which can be optimized by TPOT.</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">    """</span>
 <a id="__codelineno-0-104" name="__codelineno-0-104"></a>
 <a id="__codelineno-0-105" name="__codelineno-0-105"></a>    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Component</span><span class="p">):</span>
 <a id="__codelineno-0-106" name="__codelineno-0-106"></a>        <span class="k">return</span> <span class="n">component_to_estimatornode</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
@@ -2990,7 +2990,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-113" name="__codelineno-0-113"></a>    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">Split</span><span class="p">):</span>
 <a id="__codelineno-0-114" name="__codelineno-0-114"></a>        <span class="k">return</span> <span class="n">split_to_unionpipeline</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 <a id="__codelineno-0-115" name="__codelineno-0-115"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2"> not supported&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Node type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2"> not supported"</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>

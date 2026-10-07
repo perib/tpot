@@ -2997,7 +2997,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-155">155</a></span>
 <span class="normal"><a href="#__codelineno-0-156">156</a></span>
 <span class="normal"><a href="#__codelineno-0-157">157</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-122" name="__codelineno-0-122"></a><span class="k">def</span><span class="w"> </span><span class="nf">crowding_distance</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
-<a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-123" name="__codelineno-0-123"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-124" name="__codelineno-0-124"></a><span class="sd">    Takes a matrix of scores and returns the crowding distance for each point.</span>
 <a id="__codelineno-0-125" name="__codelineno-0-125"></a>
 <a id="__codelineno-0-126" name="__codelineno-0-126"></a><span class="sd">    Parameters</span>
@@ -3009,7 +3009,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-132" name="__codelineno-0-132"></a><span class="sd">    -------</span>
 <a id="__codelineno-0-133" name="__codelineno-0-133"></a><span class="sd">    list</span>
 <a id="__codelineno-0-134" name="__codelineno-0-134"></a><span class="sd">        A list of the crowding distances for each point in the score matrix.</span>
-<a id="__codelineno-0-135" name="__codelineno-0-135"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-135" name="__codelineno-0-135"></a><span class="sd">    """</span>
 <a id="__codelineno-0-136" name="__codelineno-0-136"></a>    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 <a id="__codelineno-0-137" name="__codelineno-0-137"></a>    <span class="c1"># Initialize the crowding distance for each point to zero</span>
 <a id="__codelineno-0-138" name="__codelineno-0-138"></a>    <span class="n">crowding_distances</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">))]</span>
@@ -3020,8 +3020,8 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-143" name="__codelineno-0-143"></a>        <span class="n">sorted_i</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[:,</span> <span class="n">objective_i</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
 <a id="__codelineno-0-144" name="__codelineno-0-144"></a>
 <a id="__codelineno-0-145" name="__codelineno-0-145"></a>        <span class="c1"># Set the crowding distance of the first and last points to infinity</span>
-<a id="__codelineno-0-146" name="__codelineno-0-146"></a>        <span class="n">crowding_distances</span><span class="p">[</span><span class="n">sorted_i</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-147" name="__codelineno-0-147"></a>        <span class="n">crowding_distances</span><span class="p">[</span><span class="n">sorted_i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;inf&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-146" name="__codelineno-0-146"></a>        <span class="n">crowding_distances</span><span class="p">[</span><span class="n">sorted_i</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span>
+<a id="__codelineno-0-147" name="__codelineno-0-147"></a>        <span class="n">crowding_distances</span><span class="p">[</span><span class="n">sorted_i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">"inf"</span><span class="p">)</span>
 <a id="__codelineno-0-148" name="__codelineno-0-148"></a>
 <a id="__codelineno-0-149" name="__codelineno-0-149"></a>        <span class="k">if</span> <span class="n">matrix</span><span class="p">[</span><span class="n">sorted_i</span><span class="p">[</span><span class="mi">0</span><span class="p">]][</span><span class="n">objective_i</span><span class="p">]</span> <span class="o">==</span> <span class="n">matrix</span><span class="p">[</span><span class="n">sorted_i</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]][</span><span class="n">objective_i</span><span class="p">]:</span> <span class="c1"># https://github.com/DEAP/deap/blob/f2a570567fa3dce156d7cfb0c50bc72f133258a1/deap/tools/emo.py#L135</span>
 <a id="__codelineno-0-150" name="__codelineno-0-150"></a>            <span class="k">continue</span>
@@ -3137,7 +3137,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-116">116</a></span>
 <span class="normal"><a href="#__codelineno-0-117">117</a></span>
 <span class="normal"><a href="#__codelineno-0-118">118</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-101" name="__codelineno-0-101"></a><span class="k">def</span><span class="w"> </span><span class="nf">dominates</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-103" name="__codelineno-0-103"></a><span class="sd">    returns true is all values in list1 are not strictly worse than list2 AND at least one item in list1 is better than list2</span>
 <a id="__codelineno-0-104" name="__codelineno-0-104"></a>
 <a id="__codelineno-0-105" name="__codelineno-0-105"></a><span class="sd">    Parameters</span>
@@ -3152,7 +3152,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-114" name="__codelineno-0-114"></a><span class="sd">    bool</span>
 <a id="__codelineno-0-115" name="__codelineno-0-115"></a><span class="sd">        True if all values in list1 are not strictly worse than list2 AND at least one item in list1 is better than list2, False otherwise.</span>
 <a id="__codelineno-0-116" name="__codelineno-0-116"></a>
-<a id="__codelineno-0-117" name="__codelineno-0-117"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-117" name="__codelineno-0-117"></a><span class="sd">    """</span>
 <a id="__codelineno-0-118" name="__codelineno-0-118"></a>    <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">list2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)))</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">list2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -3286,7 +3286,7 @@ Rows are considered samples, and columns are considered objectives.</p>
 <span class="normal"><a href="#__codelineno-0-96">96</a></span>
 <span class="normal"><a href="#__codelineno-0-97">97</a></span>
 <span class="normal"><a href="#__codelineno-0-98">98</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="k">def</span><span class="w"> </span><span class="nf">nondominated_sorting</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">    Returns the indices of the non-dominated rows in the scores matrix.</span>
 <a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">    Rows are considered samples, and columns are considered objectives.</span>
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a>
@@ -3300,7 +3300,7 @@ Rows are considered samples, and columns are considered objectives.</p>
 <a id="__codelineno-0-53" name="__codelineno-0-53"></a><span class="sd">    list</span>
 <a id="__codelineno-0-54" name="__codelineno-0-54"></a><span class="sd">        A list of lists of indices of the non-dominated rows in the scores matrix.</span>
 <a id="__codelineno-0-55" name="__codelineno-0-55"></a>
-<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56"></a><span class="sd">    """</span>
 <a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="c1"># Initialize the front list and the rank list</span>
 <a id="__codelineno-0-58" name="__codelineno-0-58"></a>
 <a id="__codelineno-0-59" name="__codelineno-0-59"></a>    <span class="c1"># Initialize the current front</span>
@@ -3485,7 +3485,7 @@ Rows are considered samples, and columns are considered objectives.</p>
 <span class="normal"><a href="#__codelineno-0-200">200</a></span>
 <span class="normal"><a href="#__codelineno-0-201">201</a></span>
 <span class="normal"><a href="#__codelineno-0-202">202</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-162" name="__codelineno-0-162"></a><span class="k">def</span><span class="w"> </span><span class="nf">survival_select_NSGA2</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-163" name="__codelineno-0-163"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-164" name="__codelineno-0-164"></a><span class="sd">    Select the top k individuals from the scores matrix using the NSGA-II algorithm.</span>
 <a id="__codelineno-0-165" name="__codelineno-0-165"></a>
 <a id="__codelineno-0-166" name="__codelineno-0-166"></a><span class="sd">    Parameters</span>
@@ -3502,7 +3502,7 @@ Rows are considered samples, and columns are considered objectives.</p>
 <a id="__codelineno-0-177" name="__codelineno-0-177"></a><span class="sd">    list</span>
 <a id="__codelineno-0-178" name="__codelineno-0-178"></a><span class="sd">        A list of indices of the selected individuals (without repeats).</span>
 <a id="__codelineno-0-179" name="__codelineno-0-179"></a>
-<a id="__codelineno-0-180" name="__codelineno-0-180"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-180" name="__codelineno-0-180"></a><span class="sd">    """</span>
 <a id="__codelineno-0-181" name="__codelineno-0-181"></a>
 <a id="__codelineno-0-182" name="__codelineno-0-182"></a>    <span class="n">pareto_fronts</span> <span class="o">=</span> <span class="n">nondominated_sorting</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
 <a id="__codelineno-0-183" name="__codelineno-0-183"></a>

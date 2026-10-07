@@ -2923,7 +2923,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <span class="normal"><a href="#__codelineno-0-49">49</a></span>
 <span class="normal"><a href="#__codelineno-0-50">50</a></span>
 <span class="normal"><a href="#__codelineno-0-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="k">def</span><span class="w"> </span><span class="nf">average_path_length_objective</span><span class="p">(</span><span class="n">graph_pipeline</span><span class="p">):</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="w">    </span><span class="sd">"""</span>
 <a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">    Computes the average shortest path from all nodes to the root/final estimator (only supported for GraphPipeline)</span>
 <a id="__codelineno-0-42" name="__codelineno-0-42"></a>
 <a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">    Parameters</span>
@@ -2931,7 +2931,7 @@ License along with TPOT. If not, see <a href="http://www.gnu.org/licenses/">http
 <a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">    graph_pipeline: GraphPipeline</span>
 <a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">        The pipeline to compute the average path length for</span>
 <a id="__codelineno-0-47" name="__codelineno-0-47"></a>
-<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    """</span>
 <a id="__codelineno-0-49" name="__codelineno-0-49"></a>
 <a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="n">path_lengths</span> <span class="o">=</span>  <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path_length</span><span class="p">(</span><span class="n">graph_pipeline</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">graph_pipeline</span><span class="o">.</span><span class="n">root</span><span class="p">)</span>
 <a id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">path_lengths</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span><span class="o">+</span><span class="mi">1</span>
